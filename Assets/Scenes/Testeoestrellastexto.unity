@@ -2585,18 +2585,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Test2
   preguntas:
-  - pregunta: Quien fue el coronel leonsio prado gutierres
-    respuesta1: fue mi pene
-    respuesta2: el
-    respuesta3: todas las anteriores
-    respuesta4: mi pene
-    repuetanume: 3
-  - pregunta: Fortnite es bueno?
+  - pregunta: "\xBFCuantos peces hay en una pescera?"
+    respuesta1: pez
+    respuesta2: ces
+    respuesta3: No se dio una cantidad de peces
+    respuesta4: 3
+    repuetanume: 4
+  - pregunta: "\xBFEl salmon es un pez?"
     respuesta1: no
     respuesta2: si
     respuesta3: todas las anteriores
-    respuesta4: fe fire
+    respuesta4: no
     repuetanume: 2
+  - pregunta: "\xBFPorque hay tantas estrellas en el mar?"
+    respuesta1: El sol es una estrella
+    respuesta2: De mar o estrellas normales?
+    respuesta3: El mar refleja las estrellas del cielo y da el efecto de que esten
+      dentro del mar
+    respuesta4: Se cayeron
+    repuetanume: 4
   canva: {fileID: 390272911}
   textopregunta: {fileID: 1605090441}
   textorespuesta1: {fileID: 1673448686}
