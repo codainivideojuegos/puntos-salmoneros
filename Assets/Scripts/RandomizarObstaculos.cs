@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class RandomizarObstaculos : MonoBehaviour
@@ -12,26 +13,21 @@ public class RandomizarObstaculos : MonoBehaviour
     void Awake()
     {
         jugador = GameObject.FindGameObjectWithTag("Player").transform;
-        GenerarObstaculos();
+        StartCoroutine(GenerarObstaculos(30f));
     }
-
-    void Update()
+    IEnumerator GenerarObstaculos(float tiempo)
     {
-        if (Vector2.Distance(jugador.position, PuntoFinal.position) < DistanciaMinima)
+        for (float i = 0f; i<= tiempo; i += 1f)
         {
-            Debug.Log(Vector2.Distance(jugador.position, PuntoFinal.position));
-            GenerarObstaculos();
+            int CantObstaculos = Random.Range(0, 4);
+            for (int z = 0; z <= CantObstaculos; z++)
+            {
+                int RandomObstaculo = Random.Range(0, Obstaculos.Length);
+                Vector3 Punto = new Vector3 (PuntoFinal.position.x, Random.Range(-4.25f,4.25f), 0);
+                GameObject Obstaculo = Instantiate(Obstaculos[Random.Range(0,4)], Punto, Quaternion.identity);
+            }
+            yield return new WaitForSecondsRealtime(1f);
         }
-    }
-    private void GenerarObstaculos()
-    {
-        int CantObstaculos = Random.Range(0, 4);
-        for (int i = 0; i <= CantObstaculos; i++)
-        {
-            int RandomObstaculo = Random.Range(0, Obstaculos.Length);
-            Vector3 Punto = new Vector3 (PuntoFinal.position.x, Random.Range(-4.25f,4.25f), 0);
-            GameObject Obstaculo = Instantiate(Obstaculos[Random.Range(0,4)], Punto, Quaternion.identity);
-        }
-        PuntoFinal.position = new Vector3(PuntoFinal.position.x+4,0,0);
+    yield return null;
     }
 }

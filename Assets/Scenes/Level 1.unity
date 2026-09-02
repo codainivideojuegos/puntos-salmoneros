@@ -285,14 +285,46 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RandomizarObstaculos
   Obstaculos:
   - {fileID: 684201828044151834, guid: 7f2241e33edf6fe4c8aa77ff5285e998, type: 3}
-  - {fileID: 684201828044151834, guid: 7f2241e33edf6fe4c8aa77ff5285e998, type: 3}
-  - {fileID: 684201828044151834, guid: 7f2241e33edf6fe4c8aa77ff5285e998, type: 3}
-  - {fileID: 684201828044151834, guid: 7f2241e33edf6fe4c8aa77ff5285e998, type: 3}
-  - {fileID: 684201828044151834, guid: 7f2241e33edf6fe4c8aa77ff5285e998, type: 3}
+  - {fileID: 4141276833962702917, guid: 88f9cc73d0dee2d42adc1de8a74cdb3e, type: 3}
+  - {fileID: 8810230444295390776, guid: 8c9ad90adb28c564e8d373d416c79b68, type: 3}
+  - {fileID: 8810230444295390776, guid: 8c9ad90adb28c564e8d373d416c79b68, type: 3}
+  - {fileID: 8810230444295390776, guid: 8c9ad90adb28c564e8d373d416c79b68, type: 3}
   Aminochem: {fileID: 1872214024621665407, guid: b5fa320505d3dda4e9755d2e03f24529, type: 3}
   DistanciaMinima: 10
   PuntoFinal: {fileID: 336912359}
   jugador: {fileID: 0}
+--- !u!1 &880806955 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8323449241802506195, guid: d7a3a1d2e0295a848b4866c6d52453fc, type: 3}
+  m_PrefabInstance: {fileID: 8340916326472828472}
+  m_PrefabAsset: {fileID: 0}
+--- !u!50 &880806957 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 2445429537800761049, guid: d7a3a1d2e0295a848b4866c6d52453fc, type: 3}
+  m_PrefabInstance: {fileID: 8340916326472828472}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &880806961
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880806955}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cf433798e5f5fa547addd3aa8203225c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &8340916326472828472
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -341,10 +373,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6663200308783174235, guid: d7a3a1d2e0295a848b4866c6d52453fc, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 8713120321045492238, guid: 5c4e84ad21fce1944b4f4894973cdf90, type: 3}
+    - target: {fileID: 7238857994827739848, guid: d7a3a1d2e0295a848b4866c6d52453fc, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 880806957}
     - target: {fileID: 7238857994827739848, guid: d7a3a1d2e0295a848b4866c6d52453fc, type: 3}
       propertyPath: cam
       value: 
       objectReference: {fileID: 519420032}
+    - target: {fileID: 7238857994827739848, guid: d7a3a1d2e0295a848b4866c6d52453fc, type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 880806961}
     - target: {fileID: 8323449241802506195, guid: d7a3a1d2e0295a848b4866c6d52453fc, type: 3}
       propertyPath: m_Name
       value: Jugador
@@ -352,7 +396,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8323449241802506195, guid: d7a3a1d2e0295a848b4866c6d52453fc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 880806961}
   m_SourcePrefab: {fileID: 100100000, guid: d7a3a1d2e0295a848b4866c6d52453fc, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
