@@ -38,9 +38,6 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground") && !isDead)
         {
-            rb2D.linearVelocity = Vector2.zero;
-            rb2D.rotation = maxAngle;
-
             Die();
         }
     }
@@ -49,9 +46,6 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.CompareTag("Column") && !isDead)
         {
-            rb2D.linearVelocity = Vector2.zero;
-            rb2D.rotation = maxAngle;
-
             Die();
         }
     }
@@ -91,8 +85,10 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void Die()
+    public void Die()
     {
+        rb2D.linearVelocity = Vector2.zero;
+        rb2D.rotation = maxAngle;
         hasJumped = false;
         isDead = true;
         atr.SetTrigger(IsDeadHash);

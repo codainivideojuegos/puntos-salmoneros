@@ -8,7 +8,6 @@ public class GameController : MonoBehaviour
     public PlayerController player;
     public GameObject gameOverGO;
     public TextMeshProUGUI scoreText;
-    public AudioClip bgmClip;
     public int score;
     public float scrollSpeed;
     public bool isGameOver;
@@ -38,6 +37,14 @@ public class GameController : MonoBehaviour
     private void Start()
     {
         AudioManager.Instance.PlayBGM(AudioManager.BGM.Gameplay);
+    }
+
+    private void Update()
+    {
+        if (score >= 5 && !player.IsDead)
+        {
+            player.Die();
+        }
     }
 
     public void GameOver()
