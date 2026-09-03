@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class RestartGame : MonoBehaviour
 {
     [SerializeField] private Button restartButton;
+    [SerializeField] private TextMeshProUGUI shadowRestartText;
     [SerializeField] private TextMeshProUGUI restartText;
 
     private readonly WaitForSeconds waitForSeconds0_5 = new(0.5f);
@@ -23,12 +24,21 @@ public class RestartGame : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            Restart();
+            RestartGameMethod();
         }
     }
 
-    public void Restart()
+    public void RestartGameMethod()
     {
+        GameController.Instance.transition.StartScaleOut();
+
+        StartCoroutine(LoadScene());      
+    }
+
+    private IEnumerator LoadScene()
+    {
+        yield return new WaitUntil(() => !GameController.Instance.transition.isTransitioning);
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
@@ -36,10 +46,12 @@ public class RestartGame : MonoBehaviour
     {
         while (true)
         {
+            shadowRestartText.enabled = true;
             restartText.enabled = true;
 
             yield return waitForSeconds0_5;
 
+            shadowRestartText.enabled = false;
             restartText.enabled = false;
 
             yield return waitForSeconds0_5;
