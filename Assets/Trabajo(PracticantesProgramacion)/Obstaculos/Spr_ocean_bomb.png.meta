@@ -1,14 +1,10 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
-guid: 7e11f1fa5adff774184d6dc19222e9b4
-=======
-guid: 2fefae8416600bf40964e68767be0e3d
->>>>>>> 15182ce0883cd6dd341ed91eb46b681ec6c72fe3
+guid: c6e29d109f8f4b54cbd32f29fd74abf5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5408653771339830023
-    second: UI_goldbutton_down_0
+      213: -3289976821060540638
+    second: Spr_ocean_bomb_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -50,20 +46,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-<<<<<<< HEAD
-  spriteMode: 1
-=======
   spriteMode: 2
->>>>>>> 15182ce0883cd6dd341ed91eb46b681ec6c72fe3
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-<<<<<<< HEAD
-  spritePixelsToUnits: 96
-=======
-  spritePixelsToUnits: 100
->>>>>>> 15182ce0883cd6dd341ed91eb46b681ec6c72fe3
+  spritePixelsToUnits: 51
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -84,11 +72,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-<<<<<<< HEAD
-    maxTextureSize: 128
-=======
     maxTextureSize: 2048
->>>>>>> 15182ce0883cd6dd341ed91eb46b681ec6c72fe3
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -125,10 +109,8 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-<<<<<<< HEAD
-=======
   - serializedVersion: 4
-    buildTarget: tvOS
+    buildTarget: WindowsStoreApps
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -140,33 +122,71 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
->>>>>>> 15182ce0883cd6dd341ed91eb46b681ec6c72fe3
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: UI_goldbutton_down_0
+      name: Spr_ocean_bomb_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 96
-        height: 96
+        width: 50
+        height: 51
       alignment: 0
-<<<<<<< HEAD
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-=======
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 10, y: 10, z: 10, w: 10}
->>>>>>> 15182ce0883cd6dd341ed91eb46b681ec6c72fe3
+      border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9fc663e1d0a90f4b0800000000000000
-      internalID: -5408653771339830023
+      spriteID: 227ea652387a752d0800000000000000
+      internalID: -3289976821060540638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spr_ocean_bomb_1
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 0
+        width: 50
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9bab0e6e1e0e05148aa238a86f22a1aa
+      internalID: -1656881382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spr_ocean_bomb_2
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 0
+        width: 50
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3840a43bc34790b4e8ba721971bf39a3
+      internalID: -1789456502
       vertices: []
       indices: 
       edges: []
@@ -175,11 +195,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-<<<<<<< HEAD
-    spriteID: 5e97eb03825dee720800000000000000
-=======
-    spriteID: 3c5cc7ec855dbfd4fa313e9e6f926c6b
->>>>>>> 15182ce0883cd6dd341ed91eb46b681ec6c72fe3
+    spriteID: 9643f8cfddffcbd469a610b49a780325
     internalID: 0
     vertices: []
     indices: 
@@ -187,9 +203,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":50.0,"y":51.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      UI_goldbutton_down_0: -5408653771339830023
+      Spr_ocean_bomb_0: -3289976821060540638
+      Spr_ocean_bomb_1: -1656881382
+      Spr_ocean_bomb_2: -1789456502
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

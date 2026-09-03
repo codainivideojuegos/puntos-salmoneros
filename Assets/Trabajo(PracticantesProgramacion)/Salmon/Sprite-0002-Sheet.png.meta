@@ -1,14 +1,13 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
-guid: 7e11f1fa5adff774184d6dc19222e9b4
-=======
-guid: 2fefae8416600bf40964e68767be0e3d
->>>>>>> 15182ce0883cd6dd341ed91eb46b681ec6c72fe3
+guid: a20e619748b9faf4a9a1158d180587b7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5408653771339830023
-    second: UI_goldbutton_down_0
+      213: 54620541728290854
+    second: Sprite-0002-Sheet_0
+  - first:
+      213: 7977414170037210279
+    second: Sprite-0002-Sheet_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -50,20 +49,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-<<<<<<< HEAD
-  spriteMode: 1
-=======
   spriteMode: 2
->>>>>>> 15182ce0883cd6dd341ed91eb46b681ec6c72fe3
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-<<<<<<< HEAD
-  spritePixelsToUnits: 96
-=======
-  spritePixelsToUnits: 100
->>>>>>> 15182ce0883cd6dd341ed91eb46b681ec6c72fe3
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -84,14 +75,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-<<<<<<< HEAD
-    maxTextureSize: 128
-=======
     maxTextureSize: 2048
->>>>>>> 15182ce0883cd6dd341ed91eb46b681ec6c72fe3
     resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
+    textureFormat: 4
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -125,10 +112,8 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-<<<<<<< HEAD
-=======
   - serializedVersion: 4
-    buildTarget: tvOS
+    buildTarget: WindowsStoreApps
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -140,33 +125,49 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
->>>>>>> 15182ce0883cd6dd341ed91eb46b681ec6c72fe3
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: UI_goldbutton_down_0
+      name: Sprite-0002-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 96
-        height: 96
+        width: 32
+        height: 32
       alignment: 0
-<<<<<<< HEAD
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-=======
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 10, y: 10, z: 10, w: 10}
->>>>>>> 15182ce0883cd6dd341ed91eb46b681ec6c72fe3
+      border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9fc663e1d0a90f4b0800000000000000
-      internalID: -5408653771339830023
+      spriteID: 6287723e71d02c000800000000000000
+      internalID: 54620541728290854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-0002-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ac4c37ebe775be60800000000000000
+      internalID: 7977414170037210279
       vertices: []
       indices: 
       edges: []
@@ -175,11 +176,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-<<<<<<< HEAD
-    spriteID: 5e97eb03825dee720800000000000000
-=======
-    spriteID: 3c5cc7ec855dbfd4fa313e9e6f926c6b
->>>>>>> 15182ce0883cd6dd341ed91eb46b681ec6c72fe3
+    spriteID: b14fbb82b92e70644a30b3fb9747f96e
     internalID: 0
     vertices: []
     indices: 
@@ -187,9 +184,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":32.0,"y":32.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      UI_goldbutton_down_0: -5408653771339830023
+      Sprite-0002-Sheet_0: 54620541728290854
+      Sprite-0002-Sheet_1: 7977414170037210279
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

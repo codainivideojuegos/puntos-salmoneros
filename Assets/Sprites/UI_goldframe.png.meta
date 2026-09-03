@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 3a1a3a188600cfd41ac97678ddc748c3
+=======
+guid: 29745fe15ed52e74ab5b47c01cb4e8b9
+>>>>>>> 15182ce0883cd6dd341ed91eb46b681ec6c72fe3
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -46,12 +50,20 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
+<<<<<<< HEAD
   spriteMode: 1
+=======
+  spriteMode: 2
+>>>>>>> 15182ce0883cd6dd341ed91eb46b681ec6c72fe3
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
+<<<<<<< HEAD
   spritePixelsToUnits: 96
+=======
+  spritePixelsToUnits: 100
+>>>>>>> 15182ce0883cd6dd341ed91eb46b681ec6c72fe3
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -72,7 +84,11 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
+<<<<<<< HEAD
     maxTextureSize: 128
+=======
+    maxTextureSize: 2048
+>>>>>>> 15182ce0883cd6dd341ed91eb46b681ec6c72fe3
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -109,6 +125,22 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+<<<<<<< HEAD
+=======
+  - serializedVersion: 4
+    buildTarget: tvOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+>>>>>>> 15182ce0883cd6dd341ed91eb46b681ec6c72fe3
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -121,8 +153,13 @@ TextureImporter:
         width: 96
         height: 96
       alignment: 0
+<<<<<<< HEAD
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+=======
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 27, y: 27, z: 27, w: 27}
+>>>>>>> 15182ce0883cd6dd341ed91eb46b681ec6c72fe3
       customData: 
       outline: []
       physicsShape: []
@@ -138,7 +175,11 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
+<<<<<<< HEAD
     spriteID: 5e97eb03825dee720800000000000000
+=======
+    spriteID: 910fa438161119e45859dd623e1c4a84
+>>>>>>> 15182ce0883cd6dd341ed91eb46b681ec6c72fe3
     internalID: 0
     vertices: []
     indices: 
@@ -149,6 +190,10 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       UI_goldframe_0: 6453140502643725381
+<<<<<<< HEAD
+=======
+      UI_goldframe_1: -1973732426
+>>>>>>> 15182ce0883cd6dd341ed91eb46b681ec6c72fe3
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
