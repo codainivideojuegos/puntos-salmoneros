@@ -5,23 +5,21 @@ public class AutoDestruccion : MonoBehaviour
 {
     private Transform PuntoFinal;
     private Animator anim;
-    private Vector3 dir = Vector3.left;
     private float vel = 5f;
     private bool tocado= false;
-    public bool explosion = false, muerte = false;
-    void Start()
+    public bool muerte = false;
+    void Awake()
     {
         PuntoFinal = GameObject.FindGameObjectWithTag("PuntoFinal").transform;
         anim = GetComponent<Animator>();
     }
     void Update()
     {
-        transform.Translate(dir * vel * Time.deltaTime);
+        transform.Translate(Vector3.left * vel * Time.deltaTime);
         anim.SetBool("Tocado", tocado);
-        anim.SetBool("Explosion", explosion);
         if (Vector2.Distance(transform.position, PuntoFinal.position) > 20 || muerte)
         {
-            Muerte();
+            Destroy(gameObject);
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -32,9 +30,5 @@ public class AutoDestruccion : MonoBehaviour
             MN.Daño = true;
             tocado = true;
         }
-    }
-    public void Muerte()
-    {
-        Destroy(gameObject);
     }
 }

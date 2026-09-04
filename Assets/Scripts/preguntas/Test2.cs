@@ -1,4 +1,4 @@
-using TMPro;
+ using TMPro;
 using UnityEngine;
 using System.Collections.Generic;
 
@@ -10,6 +10,9 @@ public class Test2 : MonoBehaviour
     public Sprite spriteNormal;
     public Sprite spriteMarcado;
     public Conter counter;
+
+    [Header("Obstaculos")]
+    [SerializeField] private RandomizarObstaculos Coso;
 
     [Header("Textos")]
     public TMP_Text textopregunta;
@@ -118,10 +121,12 @@ public class Test2 : MonoBehaviour
         {
             Debug.Log("yipi");
             counter.puntu += 1;
+            EmpezarObstaculos();
         }
         else
         {
             Debug.Log("yopo");
+            EmpezarObstaculos();
         }
 
         canva.SetActive(false);
@@ -135,10 +140,12 @@ public class Test2 : MonoBehaviour
         {
             Debug.Log("yipi");
             counter.puntu += 1;
+            EmpezarObstaculos();
         }
         else
         {
             Debug.Log("yopo");
+            EmpezarObstaculos();
         }
 
         canva.SetActive(false);
@@ -164,6 +171,10 @@ public class Test2 : MonoBehaviour
             default:
                 return false;
         }
+    }
+    private void EmpezarObstaculos()
+    {
+        Coso.Empezar();
     }
 }
 
