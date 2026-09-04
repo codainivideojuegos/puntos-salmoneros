@@ -16,7 +16,7 @@ public class RepeatingBG : MonoBehaviour
         horizontalLengthBG = bcol2D.bounds.size.x;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         if (transform.position.x < -horizontalLengthBG)
         {

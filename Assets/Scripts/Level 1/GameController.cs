@@ -5,12 +5,16 @@ public class GameController : MonoBehaviour
 {
     public static GameController Instance;
 
+    public QuestionController question;
     public PlayerController player;
+    public Transition transition;
     public GameObject gameOverGO;
+    public TextMeshProUGUI shadowScoreText;
     public TextMeshProUGUI scoreText;
     public int score;
     public float scrollSpeed;
     public bool isGameOver;
+    public bool isGameStarted;
 
     private void Awake()
     {
@@ -24,6 +28,8 @@ public class GameController : MonoBehaviour
 
             Debug.LogWarning($"Duplicado eliminado del objeto: '{gameObject.name}'", gameObject);
         }
+
+        transition.gameObject.SetActive(true);
     }
 
     private void OnDestroy()
@@ -36,15 +42,24 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
-        AudioManager.Instance.PlayBGM(AudioManager.BGM.Gameplay);
+        isGameStarted = false;
+
+        AudioManager.Instance.StopBGM();
+
+        Invoke(nameof(PlayBGM), 0.5f);
     }
 
     private void Update()
     {
-        if (score >= 5 && !player.IsDead)
+        if (score >= 10 && !player.IsDead && !player.IsStopped)
         {
-            player.Die();
+            player.Stop();
         }
+    }
+
+    private void PlayBGM()
+    {
+        AudioManager.Instance.PlayBGM(AudioManager.BGM.Gameplay);
     }
 
     public void GameOver()
@@ -58,7 +73,8 @@ public class GameController : MonoBehaviour
         if (!player.IsDead)
         {
             score++;
-            scoreText.text = "Puntuación: " + score.ToString("000000");
+            shadowScoreText.text = score.ToString();
+            scoreText.text = score.ToString();
 
             AudioManager.Instance.PlaySFX(AudioManager.SFX.Score);
         }

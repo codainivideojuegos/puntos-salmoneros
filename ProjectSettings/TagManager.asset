@@ -44,6 +44,24 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: BG
+    uniqueID: 689676657
+    locked: 0
+  - name: Column
+    uniqueID: 1441502001
+    locked: 0
+  - name: Bubble
+    uniqueID: 3233163571
+    locked: 0
+  - name: Ground
+    uniqueID: 3522988415
+    locked: 0
+  - name: Player
+    uniqueID: 2008614581
+    locked: 0
+  - name: UI
+    uniqueID: 3889321113
+    locked: 0
   m_RenderingLayers:
   - Default
   m_MigratedRenderPipelines: []

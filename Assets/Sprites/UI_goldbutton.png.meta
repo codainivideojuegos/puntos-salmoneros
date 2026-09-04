@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+guid: f71cb4ceffc8bdf4e8efcb0ede66d88e
+=======
 guid: c0fa3ed2f16f06e45b4e675423210af9
+>>>>>>> 15182ce0883cd6dd341ed91eb46b681ec6c72fe3
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -46,12 +50,20 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
+<<<<<<< HEAD
+  spriteMode: 1
+=======
   spriteMode: 2
+>>>>>>> 15182ce0883cd6dd341ed91eb46b681ec6c72fe3
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
+<<<<<<< HEAD
+  spritePixelsToUnits: 96
+=======
   spritePixelsToUnits: 100
+>>>>>>> 15182ce0883cd6dd341ed91eb46b681ec6c72fe3
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -72,7 +84,11 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
+<<<<<<< HEAD
+    maxTextureSize: 128
+=======
     maxTextureSize: 2048
+>>>>>>> 15182ce0883cd6dd341ed91eb46b681ec6c72fe3
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -109,6 +125,8 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+<<<<<<< HEAD
+=======
   - serializedVersion: 4
     buildTarget: tvOS
     maxTextureSize: 2048
@@ -122,6 +140,7 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+>>>>>>> 15182ce0883cd6dd341ed91eb46b681ec6c72fe3
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -134,8 +153,13 @@ TextureImporter:
         width: 96
         height: 96
       alignment: 0
+<<<<<<< HEAD
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+=======
       pivot: {x: 0.5, y: 0.5}
       border: {x: 10, y: 10, z: 10, w: 10}
+>>>>>>> 15182ce0883cd6dd341ed91eb46b681ec6c72fe3
       customData: 
       outline: []
       physicsShape: []
@@ -151,7 +175,11 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
+<<<<<<< HEAD
+    spriteID: 5e97eb03825dee720800000000000000
+=======
     spriteID: e41e8d9a51a1bd0408f3f567e6f477af
+>>>>>>> 15182ce0883cd6dd341ed91eb46b681ec6c72fe3
     internalID: 0
     vertices: []
     indices: 
