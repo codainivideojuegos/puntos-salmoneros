@@ -14,7 +14,6 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D rb2D = null;
     private Animator atr = null;
-    private readonly int HasJumpedHash = Animator.StringToHash("HasJumped");
     private readonly int IsDeadHash = Animator.StringToHash("IsDead");
 
     public bool IsDead => isDead;
@@ -64,7 +63,6 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && !isDead && !isStopped && GameController.Instance.isGameStarted)
         {
             hasJumped = true;
-            atr.SetTrigger(HasJumpedHash);
 
             Debug.Log("Ha saltado.");
         }
@@ -106,8 +104,8 @@ public class PlayerController : MonoBehaviour
 
     public void Stop()
     {
-        rb2D.linearVelocity = Vector2.zero;
         rb2D.bodyType = RigidbodyType2D.Kinematic;
+        rb2D.linearVelocity = Vector2.zero;
         isStopped = true;
 
         if (GameController.Instance.isGameStarted)
@@ -137,13 +135,31 @@ public class PlayerController : MonoBehaviour
         GameController.Instance.scoreText.enabled = false;
     }
 
+    private IEnumerator MoveToUp()
+    {
+        float speed = 3f;
+        var target = new Vector2(-2f, 8f);
+
+        while (Vector2.Distance(transform.position, target) > 0.01f)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime);
+
+            yield return null;
+        }
+
+        transform.position = target;
+    }
+
     public void Die()
     {
+        rb2D.bodyType = RigidbodyType2D.Kinematic;
         rb2D.linearVelocity = Vector2.zero;
-        rb2D.rotation = maxAngle;
+        //rb2D.rotation = maxAngle;
         hasJumped = false;
         isDead = true;
         atr.SetTrigger(IsDeadHash);
+
+        StartCoroutine(MoveToUp());
 
         GameController.Instance.GameOver();
         AudioManager.Instance.StopBGM();
