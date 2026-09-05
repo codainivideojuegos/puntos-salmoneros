@@ -277,9 +277,9 @@ MonoBehaviour:
   - {fileID: 6694411700846483018, guid: af8bd554f42228945a8c0a14dc45954f, type: 3}
   - {fileID: 2674930017891223718, guid: 1c19c019687303344abc3134c7913924, type: 3}
   Aminochem: {fileID: 0}
-  MaxObstaculos: 5
+  MaxObstaculos: 8
   PuntoFinal: {fileID: 1594988092}
-  distanciaMinima: 0.45
+  distanciaMinima: 0.5
   intentosMaximos: 10
 --- !u!4 &1260679190
 Transform:

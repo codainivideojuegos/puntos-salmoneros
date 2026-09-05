@@ -4,7 +4,7 @@ public class Obstaculos : MonoBehaviour
 {
     private Transform PuntoFinal;
     private Vector3 dir = Vector3.left;
-    private float vel = 5f;
+    [SerializeField]private float vel = 5f;
     void Start()
     {
         PuntoFinal = GameObject.FindGameObjectWithTag("PuntoFinal").transform;

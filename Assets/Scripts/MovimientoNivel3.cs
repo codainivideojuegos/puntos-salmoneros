@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class MovimientoNivel3 : MonoBehaviour
 {
-    [SerializeField] private float velocidad, y;
+    [SerializeField] private float velocidad;
+    [SerializeField] private float y;
     [SerializeField] private float suavizado = 4.0f;
     [SerializeField] private float limitesuperior = 4.25f;
     [SerializeField] private float limiteinferior = -4.25f;
@@ -20,10 +21,11 @@ public class MovimientoNivel3 : MonoBehaviour
     {
         y = Input.GetAxisRaw("Vertical");
         cam.position = new Vector3(cam.position.x, .0f, cam.position.z);
-        anim.SetBool("Daño", Daño);
+        //anim.SetBool("Daño", Daño);
     }
     private void FixedUpdate()
     {
+        Debug.Log(y);
         float velocidadObjetivo = y * velocidad;
         float velocidady = Mathf.Lerp(rb.linearVelocity.y, velocidadObjetivo, suavizado * Time.fixedDeltaTime);
         rb.linearVelocity = new Vector2(0, velocidady);
