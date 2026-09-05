@@ -177,7 +177,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 6453140502643725381, guid: 29745fe15ed52e74ab5b47c01cb4e8b9, type: 3}
+  m_Sprite: {fileID: -1198672455, guid: 3a1a3a188600cfd41ac97678ddc748c3, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -740,7 +740,7 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: -5408653771339830023, guid: 2fefae8416600bf40964e68767be0e3d, type: 3}
+    m_PressedSprite: {fileID: -455810171, guid: 7e11f1fa5adff774184d6dc19222e9b4, type: 3}
     m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
@@ -786,7 +786,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -4311346938993097951, guid: c0fa3ed2f16f06e45b4e675423210af9, type: 3}
+  m_Sprite: {fileID: 1913426367, guid: f71cb4ceffc8bdf4e8efcb0ede66d88e, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -873,7 +873,7 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: -5408653771339830023, guid: 2fefae8416600bf40964e68767be0e3d, type: 3}
+    m_PressedSprite: {fileID: -455810171, guid: 7e11f1fa5adff774184d6dc19222e9b4, type: 3}
     m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
@@ -919,7 +919,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -4311346938993097951, guid: c0fa3ed2f16f06e45b4e675423210af9, type: 3}
+  m_Sprite: {fileID: 1913426367, guid: f71cb4ceffc8bdf4e8efcb0ede66d88e, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1147,7 +1147,7 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: -5408653771339830023, guid: 2fefae8416600bf40964e68767be0e3d, type: 3}
+    m_PressedSprite: {fileID: -455810171, guid: 7e11f1fa5adff774184d6dc19222e9b4, type: 3}
     m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
@@ -1193,7 +1193,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -4311346938993097951, guid: c0fa3ed2f16f06e45b4e675423210af9, type: 3}
+  m_Sprite: {fileID: 1913426367, guid: f71cb4ceffc8bdf4e8efcb0ede66d88e, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1280,7 +1280,7 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: -5408653771339830023, guid: 2fefae8416600bf40964e68767be0e3d, type: 3}
+    m_PressedSprite: {fileID: -455810171, guid: 7e11f1fa5adff774184d6dc19222e9b4, type: 3}
     m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
@@ -1326,7 +1326,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -4311346938993097951, guid: c0fa3ed2f16f06e45b4e675423210af9, type: 3}
+  m_Sprite: {fileID: 1913426367, guid: f71cb4ceffc8bdf4e8efcb0ede66d88e, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1644,7 +1644,7 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: -5408653771339830023, guid: 2fefae8416600bf40964e68767be0e3d, type: 3}
+    m_PressedSprite: {fileID: -455810171, guid: 7e11f1fa5adff774184d6dc19222e9b4, type: 3}
     m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
@@ -1690,7 +1690,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -4311346938993097951, guid: c0fa3ed2f16f06e45b4e675423210af9, type: 3}
+  m_Sprite: {fileID: 1913426367, guid: f71cb4ceffc8bdf4e8efcb0ede66d88e, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1859,8 +1859,8 @@ MonoBehaviour:
     repuetanume: 3
   canva: {fileID: 1956433529}
   botonConfirmar: {fileID: 1722803592}
-  spriteNormal: {fileID: -4311346938993097951, guid: c0fa3ed2f16f06e45b4e675423210af9, type: 3}
-  spriteMarcado: {fileID: -5408653771339830023, guid: 2fefae8416600bf40964e68767be0e3d, type: 3}
+  spriteNormal: {fileID: 1913426367, guid: f71cb4ceffc8bdf4e8efcb0ede66d88e, type: 3}
+  spriteMarcado: {fileID: -455810171, guid: 7e11f1fa5adff774184d6dc19222e9b4, type: 3}
   counter: {fileID: 1903390272}
   Coso: {fileID: 1654596373}
   textopregunta: {fileID: 311432741}
