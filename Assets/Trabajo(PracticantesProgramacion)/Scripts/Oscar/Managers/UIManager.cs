@@ -1,7 +1,7 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -10,6 +10,10 @@ public class UIManager : MonoBehaviour
     [Header("Vida")]
     [SerializeField] private GameObject prefabVida;
     [SerializeField] private Transform corazones;
+
+    [Header("Fade")]
+    [SerializeField] private Image pantallaFade;
+    [SerializeField] private float duracionFade;
 
     private void Awake()
     {
@@ -49,6 +53,17 @@ public class UIManager : MonoBehaviour
 
     private IEnumerator Fade()
     {
-        yield return null;
+        Color colorInicial = pantallaFade.color;
+        float tiempoTranscurrido = 0f;
+
+        while (tiempoTranscurrido < duracionFade)
+        {
+            tiempoTranscurrido += Time.deltaTime;
+            float alpha = Mathf.Lerp(0f, 1f, tiempoTranscurrido / duracionFade);
+            pantallaFade.color = new Color(colorInicial.r, colorInicial.g, colorInicial.b, alpha);
+            yield return null;
+        }
+
+        pantallaFade.color = new Color(colorInicial.r, colorInicial.g, colorInicial.b, 1f);
     }
 }
