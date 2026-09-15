@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95c72657b2945a245bc11c8ab2355bd0, type: 3}
+  m_Name: Pregunta 1
+  m_EditorClassIdentifier: Assembly-CSharp::DataPreguntas
+  pregunta: "\xBFEn qu\xE9 categor\xEDa de bioestimulantes Aminohem es l\xEDder de
+    importaciones? (Seleccionar 2 alternativas)."
+  opciones:
+  - "A) Hidrolizados proteicos (amino\xE1cidos) y \xC1cidos f\xFAlvicos/h\xFAmicos"
+  - "B) Extractos de algas y \xC1cidos h\xFAmicos"
+  - "C) Fertilizantes foliares y Amino\xE1cidos sint\xE9ticos"
+  - D) Biofertilizantes y Extractos de plantas
+  respuestaCorrecta: 1
