@@ -13,7 +13,7 @@ public class MovimientoNivel1 : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Animator anim;
     [SerializeField] public bool Daño = false;
-    [SerializeField] private float TiempoVolver;
+    [SerializeField] private float TiempoVolver = 4f;
     [SerializeField] private bool Moverse;
     void Awake()
     {
@@ -72,14 +72,14 @@ public class MovimientoNivel1 : MonoBehaviour
             Vector2 nuevaPos = Vector2.Lerp(inicioPos, destinoPos, t);
             rb.MovePosition(nuevaPos);
 
-            float anguloObjetivo = Mathf.Clamp(transform.position.y * 5f, 30f/t, -30f/t);
-            float nuevoAngulo = Mathf.LerpAngle(inicioAng, anguloObjetivo, t);
+            float nuevoAngulo = Mathf.LerpAngle(inicioAng, 0, t);
+            Debug.Log(nuevoAngulo);
             rb.MoveRotation(nuevoAngulo);
 
             tiempoTranscurrido += Time.deltaTime;
             yield return new WaitForFixedUpdate();
         }
         rb.MovePosition(destinoPos);
-        rb.MoveRotation(0);
+        rb.MoveRotation(0f);
     }
 }
