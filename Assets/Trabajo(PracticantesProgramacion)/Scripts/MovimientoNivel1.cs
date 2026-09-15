@@ -32,6 +32,9 @@ public class MovimientoNivel1 : MonoBehaviour
         {
             float velocidadObjetivo = y * velocidad;
             float velocidady = Mathf.Lerp(rb.linearVelocity.y, velocidadObjetivo, suavizado * Time.fixedDeltaTime);
+            float anguloObjetivo = Mathf.Clamp(velocidadObjetivo * 5f, -30f, 30f);
+            float nuevoAngulo = Mathf.LerpAngle(rb.rotation, anguloObjetivo, 5f * Time.fixedDeltaTime);
+            rb.MoveRotation(nuevoAngulo);
             rb.linearVelocity = new Vector2 (0, velocidady);
             if(rb.position.y > limitesuperior)
             {
@@ -57,18 +60,26 @@ public class MovimientoNivel1 : MonoBehaviour
     private IEnumerator RetornarAlCentro()
     {
         rb.linearVelocity = Vector2.zero;
-        Vector2 inicio = rb.position;
-        Vector2 destino = new Vector2(inicio.x, 0);
+        Vector2 inicioPos = rb.position;
+        Vector2 destinoPos = new Vector2(inicioPos.x, 0);
+        float inicioAng = rb.rotation;
         float tiempoTranscurrido = 0f;
 
         while (tiempoTranscurrido < TiempoVolver)
         {
-            Vector2 nuevaPos = Vector2.Lerp(inicio, destino, tiempoTranscurrido / TiempoVolver);
+            float t = tiempoTranscurrido / TiempoVolver;
+
+            Vector2 nuevaPos = Vector2.Lerp(inicioPos, destinoPos, t);
             rb.MovePosition(nuevaPos);
+
+            float anguloObjetivo = Mathf.Clamp(transform.position.y * 5f, 30f/t, -30f/t);
+            float nuevoAngulo = Mathf.LerpAngle(inicioAng, anguloObjetivo, t);
+            rb.MoveRotation(nuevoAngulo);
+
             tiempoTranscurrido += Time.deltaTime;
             yield return new WaitForFixedUpdate();
         }
-
-        rb.MovePosition(destino);
+        rb.MovePosition(destinoPos);
+        rb.MoveRotation(0);
     }
 }
