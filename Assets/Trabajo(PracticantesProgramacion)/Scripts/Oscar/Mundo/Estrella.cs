@@ -1,3 +1,4 @@
+using Player2;
 using UnityEngine;
 
 namespace Estrella
@@ -10,7 +11,7 @@ namespace Estrella
             {
                 AudioManager.Instance.changeSFX("Estrella");
                 PreguntasManager.Instance.MostrarPanelPreguntas();
-                Destroy(collision.gameObject);
+                collision.gameObject.GetComponent<Player>().Murio_O_Gano(Player.Estado.Gano);
             }
         }
     }

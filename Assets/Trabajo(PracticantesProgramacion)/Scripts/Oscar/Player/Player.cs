@@ -8,6 +8,7 @@ namespace Player2
     public class Player : MonoBehaviour
     {
         public enum TipoVuelo { Ship, Wave }
+        public enum Estado { Moviendo, Muerto, Gano }
 
         [Header("Modo")]
         [SerializeField] private TipoVuelo tipo = TipoVuelo.Ship;
@@ -33,6 +34,7 @@ namespace Player2
         private TrailRenderer estela;
         private ParticleSystem particulas;
         private int vida = 3;
+        [HideInInspector] public Estado estado = Estado.Moviendo;
 
         private void Awake()
         {
@@ -41,7 +43,18 @@ namespace Player2
 
         private void FixedUpdate()
         {
-            Moviento();
+            switch (estado)
+            {
+                case Estado.Moviendo:
+                    Moviento();
+                    break;
+                case Estado.Muerto:
+                    rb.linearVelocity = Vector2.zero;
+                    break;
+                case Estado.Gano:
+                    rb.linearVelocity = Vector2.zero;
+                    break;
+            }
         }
 
         private void Inicializar()
@@ -73,18 +86,7 @@ namespace Player2
 
             UIManager.Instance.ActualizarVida(vida);
 
-            AudioManager.Instance.changeSFX("Muerte");
-
-            if (vida <= 0)
-            {
-                UIManager.Instance.StartCoroutine(UIManager.Instance.HaciendoFade("Player"));
-                Destroy(gameObject);
-                return;
-            }
-            else if (vida > 0)
-            {
-                StartCoroutine(EsperarAntesDeReiniciar());
-            }
+            Murio_O_Gano(estado = Estado.Muerto);
         }
 
         private void LimitesY()
@@ -104,10 +106,32 @@ namespace Player2
             }
         }
 
+        public void Murio_O_Gano(Estado estado)
+        {
+            if (estado == Estado.Gano)
+            {
+                Destroy(gameObject);
+            }
+            else if (estado == Estado.Muerto)
+            {
+                AudioManager.Instance.changeSFX("Muerte");
+
+                if (vida <= 0)
+                {
+                    UIManager.Instance.StartCoroutine(UIManager.Instance.HaciendoFade("Player"));
+                    Destroy(gameObject);
+                    return;
+                }
+                else if (vida > 0)
+                {
+                    StartCoroutine(EsperarAntesDeReiniciar());
+                }
+            }            
+        }
+
         private IEnumerator EsperarAntesDeReiniciar()
         {
             AudioManager.Instance.StopMusic();
-            rb.constraints = RigidbodyConstraints2D.FreezeAll;
             particulas.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
@@ -115,16 +139,14 @@ namespace Player2
 
             yield return new WaitForSeconds(1.2f);
 
-            // Reiniciar la musica
             AudioManager.Instance.changeMusic(0);
-
             transform.position = posicionaInicial;
-            rb.constraints &= ~RigidbodyConstraints2D.FreezePositionX & ~RigidbodyConstraints2D.FreezePositionY;
-            estela.enabled = true;          
+            estela.enabled = true;
             particulas.Play();
             gameObject.GetComponent<SpriteRenderer>().enabled = true;
             gameObject.GetComponent<BoxCollider2D>().enabled = true;
             camara.PreviousStateIsValid = false;
+            estado = Estado.Moviendo;
         }
     }
 }
