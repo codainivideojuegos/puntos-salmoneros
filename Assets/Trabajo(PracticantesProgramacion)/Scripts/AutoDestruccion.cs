@@ -17,7 +17,7 @@ public class AutoDestruccion : MonoBehaviour
     {
         transform.Translate(Vector3.left * vel * Time.deltaTime);
         anim.SetBool("Tocado", tocado);
-        if (Vector2.Distance(transform.position, PuntoFinal.position) > 8 || muerte)
+        if (Vector2.Distance(transform.position, PuntoFinal.position) > 9 || muerte)
         {
             Destroy(gameObject);
         }

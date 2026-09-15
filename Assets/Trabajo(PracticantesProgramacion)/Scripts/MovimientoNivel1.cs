@@ -73,7 +73,6 @@ public class MovimientoNivel1 : MonoBehaviour
             rb.MovePosition(nuevaPos);
 
             float nuevoAngulo = Mathf.LerpAngle(inicioAng, 0, t);
-            Debug.Log(nuevoAngulo);
             rb.MoveRotation(nuevoAngulo);
 
             tiempoTranscurrido += Time.deltaTime;
