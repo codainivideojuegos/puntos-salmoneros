@@ -16,7 +16,7 @@ public class Parallax : MonoBehaviour
             }
             else
             {
-                fondos[i].transform.position = new Vector3(18, 0, 0);
+                fondos[i].transform.position = new Vector3(18, fondos[i].transform.position.y, 0);
             }
         }
     }
