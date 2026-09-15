@@ -195,6 +195,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2973500}
   m_CullTransparentMesh: 1
+--- !u!1 &71075332 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8437293128265514746, guid: b4b3b316970cc1a49bd0b09994d82b2f, type: 3}
+  m_PrefabInstance: {fileID: 305492225}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &71075334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 71075332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4c71d5408f8fce4689db00c3bdfc076, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GeneradorNivel
+  tiempo: 30
+  Obstaculos:
+  - {fileID: 3008868356159753400, guid: 3b5eb0186eedc5440aa72b14e7f41022, type: 3}
+  Aminochem: {fileID: 1216404002300529788, guid: a53ee312b20192e4083f671694576932, type: 3}
+  MaxObstaculos: 3
+  PuntoFinal: {fileID: 1837497900}
+  jugador: {fileID: 1845143926}
+  distanciaMinima: 1.2
+  intentosMaximos: 10
 --- !u!1001 &305492225
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -251,10 +277,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2790082440758185201, guid: b4b3b316970cc1a49bd0b09994d82b2f, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8437293128265514746, guid: b4b3b316970cc1a49bd0b09994d82b2f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 71075334}
   m_SourcePrefab: {fileID: 100100000, guid: b4b3b316970cc1a49bd0b09994d82b2f, type: 3}
 --- !u!1 &311432738
 GameObject:
@@ -1564,17 +1594,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1654596373 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2790082440758185201, guid: b4b3b316970cc1a49bd0b09994d82b2f, type: 3}
-  m_PrefabInstance: {fileID: 305492225}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d236ef0555029140954dce0b3b8da57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RandomizarObstaculos
 --- !u!1 &1722803592
 GameObject:
   m_ObjectHideFlags: 0
@@ -1708,6 +1727,16 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1722803592}
   m_CullTransparentMesh: 1
+--- !u!4 &1837497900 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7570604649348420399, guid: b4b3b316970cc1a49bd0b09994d82b2f, type: 3}
+  m_PrefabInstance: {fileID: 305492225}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1845143926 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 688979363385500202, guid: b4b3b316970cc1a49bd0b09994d82b2f, type: 3}
+  m_PrefabInstance: {fileID: 305492225}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1903390269
 GameObject:
   m_ObjectHideFlags: 0
@@ -1862,7 +1891,7 @@ MonoBehaviour:
   spriteNormal: {fileID: 1913426367, guid: f71cb4ceffc8bdf4e8efcb0ede66d88e, type: 3}
   spriteMarcado: {fileID: -455810171, guid: 7e11f1fa5adff774184d6dc19222e9b4, type: 3}
   counter: {fileID: 1903390272}
-  Coso: {fileID: 1654596373}
+  Coso: {fileID: 71075334}
   textopregunta: {fileID: 311432741}
   textorespuesta1: {fileID: 451246328}
   textorespuesta2: {fileID: 1144252265}

@@ -12,7 +12,7 @@ public class Test2 : MonoBehaviour
     public Conter counter;
 
     [Header("Obstaculos")]
-    [SerializeField] private RandomizarObstaculos Coso;
+    [SerializeField] private GeneradorNivel Coso;
 
     [Header("Textos")]
     public TMP_Text textopregunta;
@@ -116,19 +116,11 @@ public class Test2 : MonoBehaviour
                 break;
             }
         }
-
         if (correcto)
         {
-            Debug.Log("yipi");
             counter.puntu += 1;
-            EmpezarObstaculos();
         }
-        else
-        {
-            Debug.Log("yopo");
-            EmpezarObstaculos();
-        }
-
+        EmpezarObstaculos();
         canva.SetActive(false);
         preguntaActual = null;
         respuestasMarcadas = new bool[4];
@@ -138,16 +130,9 @@ public class Test2 : MonoBehaviour
     {
         if (respuesta == preguntaActual.repuetanume)
         {
-            Debug.Log("yipi");
             counter.puntu += 1;
-            EmpezarObstaculos();
         }
-        else
-        {
-            Debug.Log("yopo");
-            EmpezarObstaculos();
-        }
-
+        EmpezarObstaculos();
         canva.SetActive(false);
         preguntaActual = null;
     }

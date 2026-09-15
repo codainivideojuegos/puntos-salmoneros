@@ -1997,7 +1997,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 770650055314730259}
-  - component: {fileID: 2790082440758185201}
   m_Layer: 0
   m_Name: Coso
   m_TagString: Untagged
@@ -2020,23 +2019,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5736256744493494725}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2790082440758185201
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8437293128265514746}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d236ef0555029140954dce0b3b8da57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RandomizarObstaculos
-  Obstaculos:
-  - {fileID: 3008868356159753400, guid: 3b5eb0186eedc5440aa72b14e7f41022, type: 3}
-  Aminochem: {fileID: 1216404002300529788, guid: a53ee312b20192e4083f671694576932, type: 3}
-  PuntoFinal: {fileID: 7570604649348420399}
-  jugador: {fileID: 0}
 --- !u!1 &9136455526171975871
 GameObject:
   m_ObjectHideFlags: 0
