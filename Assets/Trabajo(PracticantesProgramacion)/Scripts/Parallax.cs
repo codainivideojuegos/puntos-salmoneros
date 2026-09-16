@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Parallax : MonoBehaviour
 {
-    [SerializeField] private float vel = 5.0f;
+    [SerializeField] public float vel = 5.0f;
     [SerializeField] private GameObject[] fondos; 
     private void Update()
     {

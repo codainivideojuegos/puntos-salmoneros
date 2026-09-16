@@ -8,8 +8,11 @@ public class AutoDestruccion : MonoBehaviour
     private float vel = 5f;
     private bool tocado= false;
     public bool muerte = false;
+    public Vida Scripdevida;
+
     void Awake()
     {
+        Scripdevida = GameObject.FindGameObjectWithTag("Player").GetComponent<Vida>();
         PuntoFinal = GameObject.FindGameObjectWithTag("PuntoFinal").transform;
         anim = GetComponent<Animator>();
     }
@@ -27,8 +30,9 @@ public class AutoDestruccion : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             MovimientoNivel1 MN = collision.GetComponent<MovimientoNivel1>();
-            MN.Daño = true;
+            MN.DaÃ±o = true;
             tocado = true;
+            Scripdevida.Dolor(1);
         }
     }
 }
