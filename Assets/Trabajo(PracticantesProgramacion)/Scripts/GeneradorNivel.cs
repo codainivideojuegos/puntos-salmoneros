@@ -14,7 +14,7 @@ public class GeneradorNivel : MonoBehaviour
     [Header("Espaciado")]
     [SerializeField] private float distanciaMinima = 1.2f;
     [SerializeField] private int intentosMaximos = 10;
-    [SerializeField] private MovimientoNivel1 Jugador;
+    [SerializeField] private MovimientoTouchScreen Jugador;
     void Awake()
     {
         Empezar();

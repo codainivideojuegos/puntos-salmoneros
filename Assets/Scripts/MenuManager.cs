@@ -7,7 +7,7 @@ public class MenuManager : MonoBehaviour
 
     public void Jugar()
     {
-        SceneManager.LoadScene("Movimiento");
+        SceneManager.LoadScene("Testeoestrellastexto");
     }
 
     public void Opciones()
@@ -22,8 +22,6 @@ public class MenuManager : MonoBehaviour
 
     public void Salir()
     {
-        Debug.Log("Saliendo del juego...");
-
         Application.Quit();
     }
 }

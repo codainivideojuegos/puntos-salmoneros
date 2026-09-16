@@ -12,13 +12,6 @@ public class Conter : MonoBehaviour
     {
         canvabueno.SetActive(false);
     }
-    void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.H))
-        {
-            StartCoroutine(Check());
-        }
-    }
     IEnumerator Check()
     {
         canvabueno.SetActive(true);
