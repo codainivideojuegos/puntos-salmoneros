@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RandomizarObstaculos : MonoBehaviour
+public class RandomizarObjetos : MonoBehaviour
 {
     [Header("PreFab")]
     [SerializeField] private GameObject[] Obstaculos;
