@@ -11,8 +11,8 @@ public class MovimientoNivel1 : MonoBehaviour
     [SerializeField] private float limitesuperior = 4.25f;
     [SerializeField] private float limiteinferior = -4.25f;
     [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private Animator anim;
-    [SerializeField] public bool Daño = false;
+    [SerializeField] public Animator anim;
+    [SerializeField] public bool DaÃ±o = false;
     [SerializeField] private float TiempoVolver = 4f;
     [SerializeField] private bool Moverse;
     void Awake()
@@ -24,7 +24,7 @@ public class MovimientoNivel1 : MonoBehaviour
     void Update()
     {
         y = Input.GetAxisRaw("Vertical");
-        anim.SetBool("Daño", Daño);
+        anim.SetBool("DaÃ±o", DaÃ±o);
     }
     private void FixedUpdate()
     {
@@ -80,5 +80,10 @@ public class MovimientoNivel1 : MonoBehaviour
         }
         rb.MovePosition(destinoPos);
         rb.MoveRotation(0f);
+    }
+    public void Estamuerto()
+    {
+        Moverse = false;
+        rb.linearVelocity = Vector2.up;
     }
 }
