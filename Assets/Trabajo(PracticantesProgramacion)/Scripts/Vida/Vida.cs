@@ -3,25 +3,19 @@ using UnityEngine.SceneManagement;
 
 public class Vida : MonoBehaviour
 {
-    public GameObject cora1;
-    public GameObject cora2;
-    public GameObject cora3;
+    public GameObject[] corazones;
     public GameObject Panelmuerte;
-    public MovimientoNivel1 ScriptdeNviel1;
+    public MovimientoTouchScreen ScriptdeNviel1;
     public Parallax Scripparal;
     public GameObject coso;
-    public int vida = 3;
+    public int MaxVida = 3;
+    public int vida;
 
-    void Start()
+    void Awake()
     {
-
+        vida = MaxVida;
         Panelmuerte.SetActive(false);
     }
-    void Update()
-    {
-        Actualizar();
-    }
-
     public void Dolor(int cantidad)
     {
         vida -= cantidad;
@@ -42,9 +36,12 @@ public class Vida : MonoBehaviour
 
     void Actualizar()
     {
-        cora1.SetActive(vida >= 1);
-        cora2.SetActive(vida >= 2);
-        cora3.SetActive(vida >= 3);
+        int cont = 1;
+        foreach (GameObject corazon in corazones)
+        {
+            corazon.SetActive(vida >= cont);
+            cont++;
+        }
     }
     public void Reinicio()
     {

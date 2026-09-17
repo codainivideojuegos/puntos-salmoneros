@@ -29,7 +29,7 @@ public class AutoDestruccion : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            MovimientoNivel1 MN = collision.GetComponent<MovimientoNivel1>();
+            MovimientoTouchScreen MN = collision.GetComponent<MovimientoTouchScreen>();
             MN.Daño = true;
             tocado = true;
             Scripdevida.Dolor(1);

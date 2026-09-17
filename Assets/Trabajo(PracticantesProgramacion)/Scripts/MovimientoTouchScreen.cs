@@ -11,7 +11,7 @@ public class MovimientoTouchScreen : MonoBehaviour
     [SerializeField] private float limitesuperior = 4.25f;
     [SerializeField] private float limiteinferior = -4.25f;
     [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private Animator anim;
+    [SerializeField] public Animator anim;
     [SerializeField] public bool Daño = false;
     [SerializeField] private float TiempoVolver = 4f;
     [SerializeField] private bool Moverse;
@@ -36,7 +36,6 @@ public class MovimientoTouchScreen : MonoBehaviour
 
     private float ObtenerInputVertical()
     {
-        // Touch real
         if (Touchscreen.current != null && Touchscreen.current.primaryTouch.press.isPressed)
         {
             Vector2 posPantalla = Touchscreen.current.primaryTouch.position.ReadValue();
@@ -109,5 +108,10 @@ public class MovimientoTouchScreen : MonoBehaviour
         }
         rb.MovePosition(destinoPos);
         rb.MoveRotation(0f);
+    }
+    public void Estamuerto()
+    {
+        Moverse = false;
+        rb.linearVelocity = Vector2.up;
     }
 }

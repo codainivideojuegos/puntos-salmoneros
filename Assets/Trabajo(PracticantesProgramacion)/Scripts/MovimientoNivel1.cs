@@ -12,7 +12,7 @@ public class MovimientoNivel1 : MonoBehaviour
     [SerializeField] private float limiteinferior = -4.25f;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] public Animator anim;
-    [SerializeField] public bool DaÃ±o = false;
+    [SerializeField] public bool Daño = false;
     [SerializeField] private float TiempoVolver = 4f;
     [SerializeField] private bool Moverse;
     void Awake()
@@ -24,7 +24,7 @@ public class MovimientoNivel1 : MonoBehaviour
     void Update()
     {
         y = Input.GetAxisRaw("Vertical");
-        anim.SetBool("DaÃ±o", DaÃ±o);
+        anim.SetBool("Daño", Daño);
     }
     private void FixedUpdate()
     {
@@ -35,13 +35,13 @@ public class MovimientoNivel1 : MonoBehaviour
             float anguloObjetivo = Mathf.Clamp(velocidadObjetivo * 5f, -30f, 30f);
             float nuevoAngulo = Mathf.LerpAngle(rb.rotation, anguloObjetivo, 5f * Time.fixedDeltaTime);
             rb.MoveRotation(nuevoAngulo);
-            rb.linearVelocity = new Vector2 (0, velocidady);
-            if(rb.position.y > limitesuperior)
+            rb.linearVelocity = new Vector2(0, velocidady);
+            if (rb.position.y > limitesuperior)
             {
                 rb.position = new Vector2(rb.position.x, limitesuperior);
                 rb.linearVelocity = Vector2.zero;
             }
-            else if(rb.position.y < limiteinferior)
+            else if (rb.position.y < limiteinferior)
             {
                 rb.position = new Vector2(rb.position.x, limiteinferior);
                 rb.linearVelocity = Vector2.zero;
