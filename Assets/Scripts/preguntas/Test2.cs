@@ -1,14 +1,18 @@
  using TMPro;
 using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class Test2 : MonoBehaviour
 {
     public List<Preguntas> preguntas;
     public GameObject canva;
     public GameObject botonConfirmar;
+
     public Sprite spriteNormal;
     public Sprite spriteMarcado;
+
     public Conter counter;
 
     [Header("Obstaculos")]
@@ -23,23 +27,33 @@ public class Test2 : MonoBehaviour
 
     private Preguntas preguntaActual;
     private bool[] respuestasMarcadas = new bool[4];
+
     [Header("Botones")]
-    public UnityEngine.UI.Button[] botonesRespuestas;
+    public Button[] botonesRespuestas;
+
+    [Header("Feedback")]
+    [SerializeField] private float tiempoFeedback = 1f;
+
+    private bool esperandoFeedback = false;
+
 
     void Start()
     {
         canva.SetActive(false);
     }
 
+
     public void NuevaPregunta()
     {
-        canva.SetActive(true);
-
         if (preguntas.Count == 0)
         {
-            Debug.Log("hola!");
+            Debug.Log("No quedan preguntas.");
             return;
         }
+
+        esperandoFeedback = false;
+
+        canva.SetActive(true);
 
         int indice = Random.Range(0, preguntas.Count);
 
@@ -56,16 +70,21 @@ public class Test2 : MonoBehaviour
         for (int i = 0; i < botonesRespuestas.Length; i++)
         {
             botonesRespuestas[i].image.sprite = spriteNormal;
+            botonesRespuestas[i].image.color = Color.white;
+            botonesRespuestas[i].interactable = true;
         }
 
-        botonConfirmar.SetActive(preguntaActual.boolquedefinesiesESApregunta);
+        botonConfirmar.SetActive(
+            preguntaActual.boolquedefinesiesESApregunta
+        );
 
         preguntas.RemoveAt(indice);
     }
 
+
     public void Responder(int respuesta)
     {
-        if (preguntaActual == null)
+        if (preguntaActual == null || esperandoFeedback)
             return;
 
         if (preguntaActual.boolquedefinesiesESApregunta)
@@ -92,12 +111,51 @@ public class Test2 : MonoBehaviour
             return;
         }
 
-        ComprobarRespuesta(respuesta);
+        int indiceRespuesta = respuesta - 1;
+
+        if (indiceRespuesta < 0 || indiceRespuesta >= botonesRespuestas.Length)
+            return;
+
+        bool correcto = respuesta == preguntaActual.repuetanume;
+
+        if (correcto)
+        {
+            counter.puntu += 1;
+        }
+
+        StartCoroutine(MostrarResultadoBoton(correcto, indiceRespuesta));
     }
 
+private IEnumerator MostrarResultadoBoton(bool correcto, int indiceBoton)
+{
+    esperandoFeedback = true;
+
+    for (int i = 0; i < botonesRespuestas.Length; i++)
+    {
+        botonesRespuestas[i].interactable = false;
+    }
+
+    botonConfirmar.SetActive(false);
+
+    botonesRespuestas[indiceBoton].image.color =
+        correcto ? Color.green : Color.red;
+
+    yield return new WaitForSeconds(tiempoFeedback);
+
+    botonesRespuestas[indiceBoton].image.color = Color.white;
+
+    canva.SetActive(false);
+
+    preguntaActual = null;
+    respuestasMarcadas = new bool[4];
+
+    esperandoFeedback = false;
+
+    EmpezarObstaculos();
+}
     public void ConfirmarRespuesta()
     {
-        if (preguntaActual == null)
+        if (preguntaActual == null || esperandoFeedback)
             return;
 
         if (!preguntaActual.boolquedefinesiesESApregunta)
@@ -116,26 +174,55 @@ public class Test2 : MonoBehaviour
                 break;
             }
         }
+
         if (correcto)
-        {
-            counter.puntu += 1;
-        }
-        EmpezarObstaculos();
-        canva.SetActive(false);
-        preguntaActual = null;
-        respuestasMarcadas = new bool[4];
+    {
+        counter.puntu += 1;
     }
 
-    void ComprobarRespuesta(int respuesta)
-    {
-        if (respuesta == preguntaActual.repuetanume)
-        {
-            counter.puntu += 1;
-        }
-        EmpezarObstaculos();
-        canva.SetActive(false);
-        preguntaActual = null;
+    StartCoroutine(MostrarResultadoMultiple(correcto));
     }
+    private IEnumerator MostrarResultadoMultiple(bool correcto)
+{
+    esperandoFeedback = true;
+
+    botonConfirmar.SetActive(false);
+
+    for (int i = 0; i < 4; i++)
+    {
+        if (i >= botonesRespuestas.Length)
+            continue;
+
+        botonesRespuestas[i].interactable = false;
+
+        if (respuestasMarcadas[i])
+        {
+            bool respuestaCorrecta = ObtenerRespuestaCorrecta(i);
+
+            botonesRespuestas[i].image.color =
+                respuestaCorrecta ? Color.green : Color.red;
+        }
+        //gracias oscar
+    }
+
+    yield return new WaitForSeconds(tiempoFeedback);
+
+    for (int i = 0; i < botonesRespuestas.Length; i++)
+    {
+        botonesRespuestas[i].image.color = Color.white;
+        botonesRespuestas[i].image.sprite = spriteNormal;
+        botonesRespuestas[i].interactable = true;
+    }
+
+    canva.SetActive(false);
+
+    preguntaActual = null;
+    respuestasMarcadas = new bool[4];
+
+    esperandoFeedback = false;
+
+    EmpezarObstaculos();
+}
 
     bool ObtenerRespuestaCorrecta(int indice)
     {
@@ -157,11 +244,14 @@ public class Test2 : MonoBehaviour
                 return false;
         }
     }
+
+
     private void EmpezarObstaculos()
     {
         Coso.Empezar();
     }
 }
+
 
 [System.Serializable]
 public class Preguntas
