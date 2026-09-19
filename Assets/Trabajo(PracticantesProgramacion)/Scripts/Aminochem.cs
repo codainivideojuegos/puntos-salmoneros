@@ -27,6 +27,8 @@ public class Aminochem : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+	    AudioManagerOscar.Instance.changeSFX("Estrella");
+
             tocado = true;
             anim.SetBool("Tocado",tocado);
             collision.GetComponent<Vida>().EstablecerVida();

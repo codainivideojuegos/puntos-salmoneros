@@ -39,6 +39,8 @@ public class AutoDestruccion : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+	    AudioManagerOscar.Instance.changeSFX("Muerte");
+
             MovimientoTouchScreen MN = collision.GetComponent<MovimientoTouchScreen>();
             MN.Daño = true;
             tocado = true;
