@@ -11,5 +11,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Testeoestrellastexto.unity
     guid: 48fcd04e038c1af4cab9d4a3a3d3515c
+  - enabled: 1
+    path: Assets/Scenes/Level 2.unity
+    guid: d20d83813536c3c4eb3815ab4021c323
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}

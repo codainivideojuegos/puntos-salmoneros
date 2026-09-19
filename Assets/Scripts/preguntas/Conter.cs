@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Conter : MonoBehaviour
 {
@@ -11,6 +12,17 @@ public class Conter : MonoBehaviour
     void Start()
     {
         canvabueno.SetActive(false);
+    }
+    void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.H))
+        {
+            StartCoroutine(Check());
+        }
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            SceneManager.LoadScene(2);
+        }
     }
     IEnumerator Check()
     {

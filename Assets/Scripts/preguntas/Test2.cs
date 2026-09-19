@@ -1,4 +1,4 @@
- using TMPro;
+using TMPro;
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
@@ -36,18 +36,41 @@ public class Test2 : MonoBehaviour
 
     private bool esperandoFeedback = false;
 
+    private int indicePreguntaActual = -1;
+
 
     void Start()
     {
         canva.SetActive(false);
+
+        if (counter != null)
+        {
+            counter.puntu = Sumba.buenas;
+        }
     }
 
 
     public void NuevaPregunta()
     {
-        if (preguntas.Count == 0)
+        if (esperandoFeedback)
+            return;
+
+        List<int> preguntasDisponibles = new List<int>();
+
+        for (int i = 0; i < preguntas.Count; i++)
         {
-            Debug.Log("No quedan preguntas.");
+            if (!Sumba.EstaHecha(i))
+            {
+                preguntasDisponibles.Add(i);
+            }
+        }
+
+        if (preguntasDisponibles.Count == 0)
+        {
+            Debug.Log("No quedan preguntas nuevas.");
+
+            canva.SetActive(false);
+
             return;
         }
 
@@ -55,9 +78,11 @@ public class Test2 : MonoBehaviour
 
         canva.SetActive(true);
 
-        int indice = Random.Range(0, preguntas.Count);
+        int posicionAleatoria = Random.Range(0, preguntasDisponibles.Count);
 
-        preguntaActual = preguntas[indice];
+        indicePreguntaActual = preguntasDisponibles[posicionAleatoria];
+
+        preguntaActual = preguntas[indicePreguntaActual];
 
         textopregunta.text = preguntaActual.pregunta;
         textorespuesta1.text = preguntaActual.respuesta1;
@@ -78,7 +103,7 @@ public class Test2 : MonoBehaviour
             preguntaActual.boolquedefinesiesESApregunta
         );
 
-        preguntas.RemoveAt(indice);
+        Sumba.MarcarPregunta(indicePreguntaActual);
     }
 
 
@@ -97,15 +122,18 @@ public class Test2 : MonoBehaviour
             if (indice >= botonesRespuestas.Length)
                 return;
 
-            respuestasMarcadas[indice] = !respuestasMarcadas[indice];
+            respuestasMarcadas[indice] =
+                !respuestasMarcadas[indice];
 
             if (respuestasMarcadas[indice])
             {
-                botonesRespuestas[indice].image.sprite = spriteMarcado;
+                botonesRespuestas[indice].image.sprite =
+                    spriteMarcado;
             }
             else
             {
-                botonesRespuestas[indice].image.sprite = spriteNormal;
+                botonesRespuestas[indice].image.sprite =
+                    spriteNormal;
             }
 
             return;
@@ -113,46 +141,65 @@ public class Test2 : MonoBehaviour
 
         int indiceRespuesta = respuesta - 1;
 
-        if (indiceRespuesta < 0 || indiceRespuesta >= botonesRespuestas.Length)
+        if (indiceRespuesta < 0 ||
+            indiceRespuesta >= botonesRespuestas.Length)
             return;
 
-        bool correcto = respuesta == preguntaActual.repuetanume;
+        bool correcto =
+            respuesta == preguntaActual.repuetanume;
 
-        if (correcto)
+
+        Sumba.Guardar(correcto);
+
+        if (counter != null)
         {
-            counter.puntu += 1;
+            counter.puntu = Sumba.buenas;
         }
 
-        StartCoroutine(MostrarResultadoBoton(correcto, indiceRespuesta));
+        StartCoroutine(
+            MostrarResultadoBoton(
+                correcto,
+                indiceRespuesta
+            )
+        );
     }
 
-private IEnumerator MostrarResultadoBoton(bool correcto, int indiceBoton)
-{
-    esperandoFeedback = true;
 
-    for (int i = 0; i < botonesRespuestas.Length; i++)
+    private IEnumerator MostrarResultadoBoton(
+        bool correcto,
+        int indiceBoton)
     {
-        botonesRespuestas[i].interactable = false;
+        esperandoFeedback = true;
+
+        for (int i = 0; i < botonesRespuestas.Length; i++)
+        {
+            botonesRespuestas[i].interactable = false;
+        }
+
+        botonConfirmar.SetActive(false);
+
+        botonesRespuestas[indiceBoton].image.color =
+            correcto ? Color.green : Color.red;
+
+        yield return new WaitForSeconds(tiempoFeedback);
+
+        botonesRespuestas[indiceBoton].image.color =
+            Color.white;
+
+        canva.SetActive(false);
+
+        preguntaActual = null;
+
+        indicePreguntaActual = -1;
+
+        respuestasMarcadas = new bool[4];
+
+        esperandoFeedback = false;
+
+        EmpezarObstaculos();
     }
 
-    botonConfirmar.SetActive(false);
 
-    botonesRespuestas[indiceBoton].image.color =
-        correcto ? Color.green : Color.red;
-
-    yield return new WaitForSeconds(tiempoFeedback);
-
-    botonesRespuestas[indiceBoton].image.color = Color.white;
-
-    canva.SetActive(false);
-
-    preguntaActual = null;
-    respuestasMarcadas = new bool[4];
-
-    esperandoFeedback = false;
-
-    EmpezarObstaculos();
-}
     public void ConfirmarRespuesta()
     {
         if (preguntaActual == null || esperandoFeedback)
@@ -161,12 +208,18 @@ private IEnumerator MostrarResultadoBoton(bool correcto, int indiceBoton)
         if (!preguntaActual.boolquedefinesiesESApregunta)
             return;
 
+
         bool correcto = true;
+
 
         for (int i = 0; i < 4; i++)
         {
-            bool correcta = ObtenerRespuestaCorrecta(i);
-            bool marcada = respuestasMarcadas[i];
+            bool correcta =
+                ObtenerRespuestaCorrecta(i);
+
+            bool marcada =
+                respuestasMarcadas[i];
+
 
             if (correcta != marcada)
             {
@@ -175,54 +228,85 @@ private IEnumerator MostrarResultadoBoton(bool correcto, int indiceBoton)
             }
         }
 
-        if (correcto)
-    {
-        counter.puntu += 1;
-    }
 
-    StartCoroutine(MostrarResultadoMultiple(correcto));
-    }
-    private IEnumerator MostrarResultadoMultiple(bool correcto)
-{
-    esperandoFeedback = true;
+        Sumba.Guardar(correcto);
 
-    botonConfirmar.SetActive(false);
 
-    for (int i = 0; i < 4; i++)
-    {
-        if (i >= botonesRespuestas.Length)
-            continue;
-
-        botonesRespuestas[i].interactable = false;
-
-        if (respuestasMarcadas[i])
+        if (counter != null)
         {
-            bool respuestaCorrecta = ObtenerRespuestaCorrecta(i);
-
-            botonesRespuestas[i].image.color =
-                respuestaCorrecta ? Color.green : Color.red;
+            counter.puntu =
+                Sumba.buenas;
         }
-        //gracias oscar
+
+
+        StartCoroutine(
+            MostrarResultadoMultiple(correcto)
+        );
     }
 
-    yield return new WaitForSeconds(tiempoFeedback);
 
-    for (int i = 0; i < botonesRespuestas.Length; i++)
+    private IEnumerator MostrarResultadoMultiple(
+        bool correcto)
     {
-        botonesRespuestas[i].image.color = Color.white;
-        botonesRespuestas[i].image.sprite = spriteNormal;
-        botonesRespuestas[i].interactable = true;
+        esperandoFeedback = true;
+
+        botonConfirmar.SetActive(false);
+
+
+        for (int i = 0; i < 4; i++)
+        {
+            if (i >= botonesRespuestas.Length)
+                continue;
+
+
+            botonesRespuestas[i].interactable = false;
+
+
+            if (respuestasMarcadas[i])
+            {
+                bool respuestaCorrecta =
+                    ObtenerRespuestaCorrecta(i);
+
+
+                botonesRespuestas[i].image.color =
+                    respuestaCorrecta
+                    ? Color.green
+                    : Color.red;
+            }
+        }
+
+
+        yield return new WaitForSeconds(
+            tiempoFeedback
+        );
+
+
+        for (int i = 0; i < botonesRespuestas.Length; i++)
+        {
+            botonesRespuestas[i].image.color =
+                Color.white;
+
+            botonesRespuestas[i].image.sprite =
+                spriteNormal;
+
+            botonesRespuestas[i].interactable =
+                true;
+        }
+
+
+        canva.SetActive(false);
+
+        preguntaActual = null;
+
+        indicePreguntaActual = -1;
+
+        respuestasMarcadas = new bool[4];
+
+        esperandoFeedback = false;
+
+        EmpezarObstaculos();
     }
 
-    canva.SetActive(false);
-
-    preguntaActual = null;
-    respuestasMarcadas = new bool[4];
-
-    esperandoFeedback = false;
-
-    EmpezarObstaculos();
-}
 
     bool ObtenerRespuestaCorrecta(int indice)
     {
@@ -248,9 +332,17 @@ private IEnumerator MostrarResultadoBoton(bool correcto, int indiceBoton)
 
     private void EmpezarObstaculos()
     {
-        Coso.Empezar();
+        if (Coso != null)
+        {
+            Coso.Empezar();
+        }
+    }
+    public void Yatusabeyatusabe()
+    {
+        Sumba.Matar();
     }
 }
+
 
 
 [System.Serializable]
@@ -283,4 +375,150 @@ public class Preguntas
     public bool respuesta4Correcta;
 
     public int repuetanume;
+}
+
+
+
+public static class Sumba
+{
+
+    public static bool pregunta1;
+    public static bool pregunta2;
+    public static bool pregunta3;
+    public static bool pregunta4;
+    public static bool pregunta5;
+    public static bool pregunta6;
+    public static bool pregunta7;
+    public static bool pregunta8;
+    public static bool pregunta9;
+    public static bool pregunta10;
+
+
+    public static int buenas;
+    public static int hechas;
+    public static int buenasCheckpoint;
+    public static int hechasCheckpoint;
+
+    public static void GuardarCheckpoint()
+    {
+        buenasCheckpoint = buenas;
+        hechasCheckpoint = hechas;
+    }
+
+    public static void ReiniciarCheckpoint()
+    {
+        buenas = buenasCheckpoint;
+        hechas = hechasCheckpoint;
+    }
+    public static void Guardar(bool correcta)
+    {
+        hechas++;
+
+        if (correcta)
+        {
+            buenas++;
+        }
+    }
+
+    public static void MarcarPregunta(int indice)
+    {
+        switch (indice)
+        {
+            case 0:
+                pregunta1 = true;
+                break;
+
+            case 1:
+                pregunta2 = true;
+                break;
+
+            case 2:
+                pregunta3 = true;
+                break;
+
+            case 3:
+                pregunta4 = true;
+                break;
+
+            case 4:
+                pregunta5 = true;
+                break;
+
+            case 5:
+                pregunta6 = true;
+                break;
+
+            case 6:
+                pregunta7 = true;
+                break;
+
+            case 7:
+                pregunta8 = true;
+                break;
+
+            case 8:
+                pregunta9 = true;
+                break;
+
+            case 9:
+                pregunta10 = true;
+                break;
+        }
+    }
+
+    public static bool EstaHecha(int indice)
+    {
+        switch (indice)
+        {
+            case 0:
+                return pregunta1;
+
+            case 1:
+                return pregunta2;
+
+            case 2:
+                return pregunta3;
+
+            case 3:
+                return pregunta4;
+
+            case 4:
+                return pregunta5;
+
+            case 5:
+                return pregunta6;
+
+            case 6:
+                return pregunta7;
+
+            case 7:
+                return pregunta8;
+
+            case 8:
+                return pregunta9;
+
+            case 9:
+                return pregunta10;
+
+            default:
+                return true;
+        }
+    }
+
+    public static void Matar()
+    {
+        pregunta1 = false;
+        pregunta2 = false;
+        pregunta3 = false;
+        pregunta4 = false;
+        pregunta5 = false;
+        pregunta6 = false;
+        pregunta7 = false;
+        pregunta8 = false;
+        pregunta9 = false;
+        pregunta10 = false;
+
+        buenas = 0;
+        hechas = 0;
+    }
 }
