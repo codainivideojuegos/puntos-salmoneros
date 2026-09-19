@@ -341,6 +341,14 @@ public class Test2 : MonoBehaviour
     {
         Sumba.Matar();
     }
+    public void Yatusabe2()
+    {
+        Sumba.GuardarCheckpoint();
+    }
+    public void Mamaseimamaseimamacusa()
+    {
+        Sumba.ReiniciarCheckpoint();
+    }
 }
 
 
