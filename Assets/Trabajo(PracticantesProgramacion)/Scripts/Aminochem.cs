@@ -29,6 +29,7 @@ public class Aminochem : MonoBehaviour
         {
             tocado = true;
             anim.SetBool("Tocado",tocado);
+            collision.GetComponent<Vida>().EstablecerVida();
         }
     }
 }

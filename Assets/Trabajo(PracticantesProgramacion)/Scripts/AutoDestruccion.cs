@@ -7,22 +7,32 @@ public class AutoDestruccion : MonoBehaviour
     private Animator anim;
     private float vel = 5f;
     private bool tocado= false;
+    public bool Animar = false;
     public bool muerte = false;
     public Vida Scripdevida;
 
-    void Awake()
+    void Start()
     {
         Scripdevida = GameObject.FindGameObjectWithTag("Player").GetComponent<Vida>();
         PuntoFinal = GameObject.FindGameObjectWithTag("PuntoFinal").transform;
+        if (Animar)
+        {
         anim = GetComponent<Animator>();
+        }
     }
     void Update()
     {
         transform.Translate(Vector3.left * vel * Time.deltaTime);
-        anim.SetBool("Tocado", tocado);
         if (Vector2.Distance(transform.position, PuntoFinal.position) > 9 || muerte)
         {
             Destroy(gameObject);
+        }
+    }
+    public void Animaciones()
+    {
+        if (Animar)
+        {
+            anim.SetBool("Tocado", tocado);
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)

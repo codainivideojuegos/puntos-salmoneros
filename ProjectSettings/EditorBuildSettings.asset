@@ -9,7 +9,13 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: fe2b70c5c0d473849bdc3cb0fca52b7a
   - enabled: 1
-    path: Assets/Scenes/Testeoestrellastexto.unity
+    path: Assets/Scenes/Nivel1.unity
     guid: 48fcd04e038c1af4cab9d4a3a3d3515c
+  - enabled: 1
+    path: Assets/Scenes/Nivel2.unity
+    guid: 23a2da5c36eabe34b840010720edf011
+  - enabled: 1
+    path: Assets/Scenes/Nivel3.unity
+    guid: 50a0504c51350b14493255fbc9b8ae36
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}

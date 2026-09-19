@@ -1,22 +1,28 @@
- using TMPro;
+using TMPro;
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Test2 : MonoBehaviour
 {
-    public List<Preguntas> preguntas;
+    [Header("Preguntas")]
+    public BancoPreguntas bancoPreguntas;
+
+    [Header("UI General")]
     public GameObject canva;
     public GameObject botonConfirmar;
 
+    [Header("Sprites de botones")]
     public Sprite spriteNormal;
     public Sprite spriteMarcado;
 
+    [Header("Referencias")]
     public Conter counter;
 
     [Header("Obstaculos")]
-    [SerializeField] private GeneradorNivel Coso;
+    [SerializeField] private GeneradorNivel Generador;
 
     [Header("Textos")]
     public TMP_Text textopregunta;
@@ -25,39 +31,56 @@ public class Test2 : MonoBehaviour
     public TMP_Text textorespuesta3;
     public TMP_Text textorespuesta4;
 
-    private Preguntas preguntaActual;
-    private bool[] respuestasMarcadas = new bool[4];
-
     [Header("Botones")]
     public Button[] botonesRespuestas;
 
     [Header("Feedback")]
     [SerializeField] private float tiempoFeedback = 1f;
 
+    [Header("Configuración del nivel")]
+    [Tooltip("Cuántas preguntas en TOTAL (contando todos los niveles anteriores) deben haberse entregado para pasar de este nivel. Ej: Nivel 1 = 4, Nivel 2 = 7 (4+3), Nivel 3 = 10 (4+3+3).")]
+    [SerializeField] private int umbralPreguntasParaAvanzar = 4;
+    [Tooltip("Marcar solo en el último nivel del juego.")]
+    [SerializeField] private bool esUltimoNivel = false;
+    [Tooltip("Nombre de la escena siguiente. No se usa si 'Es Ultimo Nivel' está activo.")]
+    [SerializeField] private string escenaSiguiente;
+
+    private Preguntas preguntaActual;
+    private bool[] respuestasMarcadas = new bool[4];
     private bool esperandoFeedback = false;
 
+
+    // ==========================================
+    // CICLO DE VIDA
+    // ==========================================
 
     void Start()
     {
         canva.SetActive(false);
+        Generador = GameObject.FindGameObjectWithTag("GeneradorObstaculos").GetComponent<GeneradorNivel>();
+        Debug.Log(bancoPreguntas.PreguntasRestantes());
     }
 
 
+    // ==========================================
+    // FLUJO DE PREGUNTAS
+    // ==========================================
+
     public void NuevaPregunta()
     {
-        if (preguntas.Count == 0)
+        esperandoFeedback = false;
+
+        preguntaActual = bancoPreguntas.ObtenerPreguntaAleatoria();
+
+        if (preguntaActual == null)
         {
-            Debug.Log("No quedan preguntas.");
+            // No quedan preguntas en el banco: decidir a dónde ir en vez de seguir con obstáculos a ciegas.
+            canva.SetActive(false);
+            ManejarSinPreguntasDisponibles();
             return;
         }
 
-        esperandoFeedback = false;
-
         canva.SetActive(true);
-
-        int indice = Random.Range(0, preguntas.Count);
-
-        preguntaActual = preguntas[indice];
 
         textopregunta.text = preguntaActual.pregunta;
         textorespuesta1.text = preguntaActual.respuesta1;
@@ -74,13 +97,49 @@ public class Test2 : MonoBehaviour
             botonesRespuestas[i].interactable = true;
         }
 
-        botonConfirmar.SetActive(
-            preguntaActual.boolquedefinesiesESApregunta
-        );
-
-        preguntas.RemoveAt(indice);
+        botonConfirmar.SetActive(preguntaActual.boolquedefinesiesESApregunta);
     }
 
+    private void EmpezarObstaculos()
+    {
+        Generador.Empezar();
+    }
+
+    private void ManejarFinDePregunta()
+    {
+        int entregadas = bancoPreguntas.PreguntasEntregadas();
+        bool quedanPreguntasEnBanco = bancoPreguntas.PreguntasRestantes() > 0;
+        bool alcanzoUmbralDeNivel = entregadas >= umbralPreguntasParaAvanzar;
+
+        if (!alcanzoUmbralDeNivel && quedanPreguntasEnBanco)
+        {
+            // Todavía faltan preguntas para completar este nivel: seguimos con obstáculos.
+            EmpezarObstaculos();
+        }
+        else
+        {
+            ManejarSinPreguntasDisponibles();
+        }
+    }
+
+    private void ManejarSinPreguntasDisponibles()
+    {
+        if (esUltimoNivel || bancoPreguntas.PreguntasRestantes() == 0)
+        {
+            // Es el último nivel, o no queda ninguna pregunta más en el banco: mostramos el resultado final.
+            counter.MostrarResultadoFinal(bancoPreguntas.preguntasOriginales.Count);
+        }
+        else
+        {
+            // Se cumplió el umbral de este nivel y todavía hay preguntas para los niveles siguientes.
+            SceneManager.LoadScene(escenaSiguiente);
+        }
+    }
+
+
+    // ==========================================
+    // RESPUESTA SIMPLE (una sola opción correcta)
+    // ==========================================
 
     public void Responder(int respuesta)
     {
@@ -99,14 +158,8 @@ public class Test2 : MonoBehaviour
 
             respuestasMarcadas[indice] = !respuestasMarcadas[indice];
 
-            if (respuestasMarcadas[indice])
-            {
-                botonesRespuestas[indice].image.sprite = spriteMarcado;
-            }
-            else
-            {
-                botonesRespuestas[indice].image.sprite = spriteNormal;
-            }
+            botonesRespuestas[indice].image.sprite =
+                respuestasMarcadas[indice] ? spriteMarcado : spriteNormal;
 
             return;
         }
@@ -120,39 +173,44 @@ public class Test2 : MonoBehaviour
 
         if (correcto)
         {
-            counter.puntu += 1;
+            counter.SumarPunto();
         }
 
         StartCoroutine(MostrarResultadoBoton(correcto, indiceRespuesta));
     }
 
-private IEnumerator MostrarResultadoBoton(bool correcto, int indiceBoton)
-{
-    esperandoFeedback = true;
-
-    for (int i = 0; i < botonesRespuestas.Length; i++)
+    private IEnumerator MostrarResultadoBoton(bool correcto, int indiceBoton)
     {
-        botonesRespuestas[i].interactable = false;
+        esperandoFeedback = true;
+
+        for (int i = 0; i < botonesRespuestas.Length; i++)
+        {
+            botonesRespuestas[i].interactable = false;
+        }
+
+        botonConfirmar.SetActive(false);
+
+        botonesRespuestas[indiceBoton].image.color = correcto ? Color.green : Color.red;
+
+        yield return new WaitForSeconds(tiempoFeedback);
+
+        botonesRespuestas[indiceBoton].image.color = Color.white;
+
+        canva.SetActive(false);
+
+        preguntaActual = null;
+        respuestasMarcadas = new bool[4];
+
+        esperandoFeedback = false;
+
+        ManejarFinDePregunta();
     }
 
-    botonConfirmar.SetActive(false);
 
-    botonesRespuestas[indiceBoton].image.color =
-        correcto ? Color.green : Color.red;
+    // ==========================================
+    // RESPUESTA MÚLTIPLE (varias opciones correctas)
+    // ==========================================
 
-    yield return new WaitForSeconds(tiempoFeedback);
-
-    botonesRespuestas[indiceBoton].image.color = Color.white;
-
-    canva.SetActive(false);
-
-    preguntaActual = null;
-    respuestasMarcadas = new bool[4];
-
-    esperandoFeedback = false;
-
-    EmpezarObstaculos();
-}
     public void ConfirmarRespuesta()
     {
         if (preguntaActual == null || esperandoFeedback)
@@ -176,79 +234,68 @@ private IEnumerator MostrarResultadoBoton(bool correcto, int indiceBoton)
         }
 
         if (correcto)
-    {
-        counter.puntu += 1;
-    }
-
-    StartCoroutine(MostrarResultadoMultiple(correcto));
-    }
-    private IEnumerator MostrarResultadoMultiple(bool correcto)
-{
-    esperandoFeedback = true;
-
-    botonConfirmar.SetActive(false);
-
-    for (int i = 0; i < 4; i++)
-    {
-        if (i >= botonesRespuestas.Length)
-            continue;
-
-        botonesRespuestas[i].interactable = false;
-
-        if (respuestasMarcadas[i])
         {
-            bool respuestaCorrecta = ObtenerRespuestaCorrecta(i);
-
-            botonesRespuestas[i].image.color =
-                respuestaCorrecta ? Color.green : Color.red;
+            counter.SumarPunto();
         }
-        //gracias oscar
+
+        StartCoroutine(MostrarResultadoMultiple(correcto));
     }
 
-    yield return new WaitForSeconds(tiempoFeedback);
-
-    for (int i = 0; i < botonesRespuestas.Length; i++)
+    private IEnumerator MostrarResultadoMultiple(bool correcto)
     {
-        botonesRespuestas[i].image.color = Color.white;
-        botonesRespuestas[i].image.sprite = spriteNormal;
-        botonesRespuestas[i].interactable = true;
+        esperandoFeedback = true;
+
+        botonConfirmar.SetActive(false);
+
+        for (int i = 0; i < 4; i++)
+        {
+            if (i >= botonesRespuestas.Length)
+                continue;
+
+            botonesRespuestas[i].interactable = false;
+
+            if (respuestasMarcadas[i])
+            {
+                bool respuestaCorrecta = ObtenerRespuestaCorrecta(i);
+                botonesRespuestas[i].image.color = respuestaCorrecta ? Color.green : Color.red;
+            }
+            // gracias oscar
+        }
+
+        yield return new WaitForSeconds(tiempoFeedback);
+
+        for (int i = 0; i < botonesRespuestas.Length; i++)
+        {
+            botonesRespuestas[i].image.color = Color.white;
+            botonesRespuestas[i].image.sprite = spriteNormal;
+            botonesRespuestas[i].interactable = true;
+        }
+
+        canva.SetActive(false);
+
+        preguntaActual = null;
+        respuestasMarcadas = new bool[4];
+
+        esperandoFeedback = false;
+
+        ManejarFinDePregunta();
     }
 
-    canva.SetActive(false);
 
-    preguntaActual = null;
-    respuestasMarcadas = new bool[4];
+    // ==========================================
+    // UTILIDADES
+    // ==========================================
 
-    esperandoFeedback = false;
-
-    EmpezarObstaculos();
-}
-
-    bool ObtenerRespuestaCorrecta(int indice)
+    private bool ObtenerRespuestaCorrecta(int indice)
     {
         switch (indice)
         {
-            case 0:
-                return preguntaActual.respuesta1Correcta;
-
-            case 1:
-                return preguntaActual.respuesta2Correcta;
-
-            case 2:
-                return preguntaActual.respuesta3Correcta;
-
-            case 3:
-                return preguntaActual.respuesta4Correcta;
-
-            default:
-                return false;
+            case 0: return preguntaActual.respuesta1Correcta;
+            case 1: return preguntaActual.respuesta2Correcta;
+            case 2: return preguntaActual.respuesta3Correcta;
+            case 3: return preguntaActual.respuesta4Correcta;
+            default: return false;
         }
-    }
-
-
-    private void EmpezarObstaculos()
-    {
-        Coso.Empezar();
     }
 }
 

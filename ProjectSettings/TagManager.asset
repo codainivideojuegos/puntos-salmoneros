@@ -9,6 +9,9 @@ TagManager:
   - Border
   - PuntoFinal
   - Manager
+  - Obstaculo
+  - PuntoInicial
+  - GeneradorObstaculos
   layers:
   - Default
   - TransparentFX

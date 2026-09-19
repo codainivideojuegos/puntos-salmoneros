@@ -4,27 +4,59 @@ using System.Collections;
 
 public class Conter : MonoBehaviour
 {
-    public int puntu;
+    [Header("Puntaje")]
+    public PuntajeData puntajeData;
+
+    [Header("UI")]
     public TMP_Text textonumerorespuestas;
     public TMP_Text textonumerorespuestas2;
     public GameObject canvabueno;
+
+    [Header("Configuración")]
+    [SerializeField] private float tiempoVisible = 10f;
+
+
+    // ==========================================
+    // CICLO DE VIDA
+    // ==========================================
+
     void Start()
     {
         canvabueno.SetActive(false);
     }
-    IEnumerator Check()
+
+
+    // ==========================================
+    // PUNTAJE
+    // ==========================================
+
+    public void SumarPunto()
+    {
+        puntajeData.Sumar();
+    }
+
+
+    // ==========================================
+    // PANEL DE RESULTADO FINAL
+    // ==========================================
+
+    public void MostrarResultadoFinal(int totalPreguntas)
+    {
+        StartCoroutine(Check(totalPreguntas));
+    }
+
+    private IEnumerator Check(int totalPreguntas)
     {
         canvabueno.SetActive(true);
-        textonumerorespuestas.text = "Respondiste " + puntu + " preguntas de 3!";
-        if(puntu==3)
-        {
-            textonumerorespuestas2.text = "Felizcidades!";
-        }
-        else
-        {
-            textonumerorespuestas2.text = "suicidate";
-        }
-        yield return new WaitForSeconds(1.0f);
+
+        textonumerorespuestas.text = "Respondiste " + puntajeData.Puntaje + " preguntas de " + totalPreguntas + "!";
+
+        textonumerorespuestas2.text = (puntajeData.Puntaje == totalPreguntas)
+            ? "Felicidades!"
+            : "Buen intento, sigue practicando!";
+
+        yield return new WaitForSeconds(tiempoVisible);
+
         canvabueno.SetActive(false);
     }
 }

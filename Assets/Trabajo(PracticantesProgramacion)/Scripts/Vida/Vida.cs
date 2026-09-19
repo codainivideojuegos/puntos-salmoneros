@@ -13,16 +13,16 @@ public class Vida : MonoBehaviour
 
     void Awake()
     {
-        vida = MaxVida;
-        Panelmuerte.SetActive(false);
+        EstablecerVida();
     }
     public void Dolor(int cantidad)
     {
         vida -= cantidad;
-        
+        ScriptdeNviel1.Daño = true;
         if (vida < 0) vida = 0; 
 
         Actualizar();
+
 
         if (vida <= 0)
         {
@@ -33,7 +33,12 @@ public class Vida : MonoBehaviour
             coso.SetActive(false);
         }
     }
-
+    public void EstablecerVida()
+    {
+        vida = MaxVida;
+        Panelmuerte.SetActive(false);
+        Actualizar();
+    }
     void Actualizar()
     {
         int cont = 1;

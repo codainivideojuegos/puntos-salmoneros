@@ -1,16 +1,10 @@
 fileFormatVersion: 2
-guid: 64df5afa6594aaa43a14e4eb4f574fb8
+guid: 3c31bcf1b5b3ea94facb485fbe0f694e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2990549803333357545
-    second: Rocas 1_0
-  - first:
-      213: -4014431301059932305
-    second: Rocas 1_1
-  - first:
-      213: -2284023417419061751
-    second: Rocas 1_2
+      213: -4093435073842895660
+    second: Fondo (1)_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,18 +40,18 @@ TextureImporter:
     filterMode: 0
     aniso: 1
     mipBias: 0
-    wrapU: 0
-    wrapV: 0
-    wrapW: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
   spriteMode: 1
   spriteExtrude: 1
-  spriteMeshType: 0
+  spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 256
+  spritePixelsToUnits: 1600
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -81,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: 4
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -106,7 +100,7 @@ TextureImporter:
     buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: 4
+    textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -119,7 +113,7 @@ TextureImporter:
     buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: 4
+    textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -132,7 +126,7 @@ TextureImporter:
     buildTarget: WindowsStoreApps
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: 4
+    textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -145,13 +139,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Rocas 1_0
+      name: Fondo (1)_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 26
-        width: 28
-        height: 24
+        y: 0
+        width: 1600
+        height: 959
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -160,52 +154,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9ef8cc69331908920800000000000000
-      internalID: 2990549803333357545
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Rocas 1_1
-      rect:
-        serializedVersion: 2
-        x: 58
-        y: 25
-        width: 73
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f6f0d154000e948c0800000000000000
-      internalID: -4014431301059932305
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Rocas 1_2
-      rect:
-        serializedVersion: 2
-        x: 215
-        y: 19
-        width: 41
-        height: 31
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 906201a9dc48d40e0800000000000000
-      internalID: -2284023417419061751
+      spriteID: 4d428700d723137c0800000000000000
+      internalID: -4093435073842895660
       vertices: []
       indices: 
       edges: []
@@ -224,9 +174,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Rocas 1_0: 2990549803333357545
-      Rocas 1_1: -4014431301059932305
-      Rocas 1_2: -2284023417419061751
+      Fondo (1)_0: -4093435073842895660
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

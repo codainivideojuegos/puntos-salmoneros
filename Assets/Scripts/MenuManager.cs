@@ -4,10 +4,14 @@ using UnityEngine.SceneManagement;
 public class MenuManager : MonoBehaviour
 {
     public GameObject panelOpciones;
+    public BancoPreguntas preguntas;
+    public PuntajeData puntaje;
 
     public void Jugar()
     {
-        SceneManager.LoadScene("Testeoestrellastexto");
+        SceneManager.LoadScene("Nivel1");
+        preguntas.ReiniciarBanco();
+        puntaje.Reiniciar();
     }
 
     public void Opciones()

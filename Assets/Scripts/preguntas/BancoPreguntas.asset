@@ -1,0 +1,145 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64f9f1b5caa738141856e1130bc2fd57, type: 3}
+  m_Name: BancoPreguntas
+  m_EditorClassIdentifier: Assembly-CSharp::BancoPreguntas
+  preguntasOriginales:
+  - pregunta: "\xBFEn qu\xE9 categor\xEDa de bioestimulantes Aminochem es l\xEDder
+      de importaciones? (Seleccionar 2 alternativas)"
+    respuesta1: "Hidrolizados proteicos (amino\xE1cidos)"
+    respuesta2: Extractos de algas (Ascophyllum nodosum) y quitosanos
+    respuesta3: "\xC1cidos f\xFAlvicos/h\xFAmicos"
+    respuesta4: "\xC1cidos carbox\xEDlicos de cadena corta y poliaminas"
+    boolquedefinesiesESApregunta: 1
+    respuesta1Correcta: 1
+    respuesta2Correcta: 0
+    respuesta3Correcta: 1
+    respuesta4Correcta: 0
+    repuetanume: 0
+  - pregunta: "Mencione una caracter\xEDstica incorrecta sobre nuestra materia prima"
+    respuesta1: "Su obtenci\xF3n genera un alto porcentaje de grasas saturadas de
+      dif\xEDcil absorci\xF3n foliar"
+    respuesta2: "Posee un perfil de amino\xE1cidos inestable debido a variaciones
+      en su captura estacional"
+    respuesta3: "No se puede criar en aguas muy fr\xEDas"
+    respuesta4: "Su proceso de extracci\xF3n mediante hidr\xF3lisis t\xE9rmica destruye
+      los p\xE9ptidos funcionales de bajo peso molecular"
+    boolquedefinesiesESApregunta: 0
+    respuesta1Correcta: 0
+    respuesta2Correcta: 0
+    respuesta3Correcta: 0
+    respuesta4Correcta: 0
+    repuetanume: 3
+  - pregunta: "Menciona cu\xE1l es el proceso de producci\xF3n de amino\xE1cidos
+      de Aminochem"
+    respuesta1: "Hidr\xF3lisis enzim\xE1tica"
+    respuesta2: "Hidr\xF3lisis qu\xEDmica \xE1cida (por ebullici\xF3n prolongada)"
+    respuesta3: "Fermentaci\xF3n microbiana en estado s\xF3lido"
+    respuesta4: " Extracci\xF3n por solventes org\xE1nicos y liofilizaci\xF3n"
+    boolquedefinesiesESApregunta: 0
+    respuesta1Correcta: 0
+    respuesta2Correcta: 0
+    respuesta3Correcta: 0
+    respuesta4Correcta: 0
+    repuetanume: 1
+  - pregunta: "\xBFCu\xE1ntos amino\xE1cidos tienen los hidrolizados prote\xEDcos
+      de Aminochem?"
+    respuesta1: 9
+    respuesta2: 20
+    respuesta3: 11
+    respuesta4: 16
+    boolquedefinesiesESApregunta: 0
+    respuesta1Correcta: 0
+    respuesta2Correcta: 0
+    respuesta3Correcta: 0
+    respuesta4Correcta: 0
+    repuetanume: 2
+  - pregunta: "\xBFCu\xE1l es una ventaja de bajo peso molecular de amino\xE1cidos
+      totales?"
+    respuesta1: "Mayor asimilaci\xF3n foliar por cultivo"
+    respuesta2: "Mayor translocaci\xF3n radicular por flujo de masa"
+    respuesta3: "Mayor estabilidad qu\xEDmica en mezclas de tanque complejas"
+    respuesta4: "Mayor inducci\xF3n de defensas a trav\xE9s de fitohormonas sint\xE9ticas"
+    boolquedefinesiesESApregunta: 0
+    respuesta1Correcta: 0
+    respuesta2Correcta: 0
+    respuesta3Correcta: 0
+    respuesta4Correcta: 0
+    repuetanume: 1
+  - pregunta: "\xBFCu\xE1l no es un valor de los componentes de nuestros productos?"
+    respuesta1: "Estimulaci\xF3n del enraizamiento y desarrollo del sistema radicular"
+    respuesta2: "Incremento de la tolerancia al estr\xE9s abi\xF3tico (h\xEDdrico
+      y t\xE9rmico)"
+    respuesta3: "Aceleraci\xF3n de degradaci\xF3n de sustrato"
+    respuesta4: "Optimizaci\xF3n de la absorci\xF3n y transporte de macro y micronutrientes"
+    boolquedefinesiesESApregunta: 0
+    respuesta1Correcta: 0
+    respuesta2Correcta: 0
+    respuesta3Correcta: 0
+    respuesta4Correcta: 0
+    repuetanume: 3
+  - pregunta: "Menciona cu\xE1l no es una caracter\xEDstica de alta calidad de nuestros
+      productos"
+    respuesta1: "Alta concentraci\xF3n de nitr\xF3geno org\xE1nico totalmente disponible"
+    respuesta2: "Ausencia de metales pesados y cloruros en su composici\xF3n"
+    respuesta3: Completa solubilidad en agua y estabilidad a pH extremos
+    respuesta4: "Baja relaci\xF3n amino\xE1cidos libres/totales"
+    boolquedefinesiesESApregunta: 0
+    respuesta1Correcta: 0
+    respuesta2Correcta: 0
+    respuesta3Correcta: 0
+    respuesta4Correcta: 0
+    repuetanume: 4
+  - pregunta: "Menciona cu\xE1l no es un tipo de bioestimulantes"
+    respuesta1: Fertilizantes foliares
+    respuesta2: "Microorganismos ben\xE9ficos (micorrizas y bacterias promotoras
+      del crecimiento)."
+    respuesta3: "Extractos de algas y sustancias bot\xE1nicas."
+    respuesta4: "Sustancias h\xFAmicas (\xE1cidos h\xFAmicos y f\xFAlvicos)."
+    boolquedefinesiesESApregunta: 0
+    respuesta1Correcta: 0
+    respuesta2Correcta: 0
+    respuesta3Correcta: 0
+    respuesta4Correcta: 0
+    repuetanume: 1
+  - pregunta: "\xBFQu\xE9 enunciado est\xE1 relacionado al concepto de 'Econom\xEDa
+      circular'?"
+    respuesta1: "Modelo que busca maximizar el rendimiento financiero mediante la
+      extracci\xF3n lineal de materias primas y la producci\xF3n masiva de bienes"
+    respuesta2: "Sistema que delega la gesti\xF3n ambiental exclusivamente al Estado
+      mediante la aplicaci\xF3n de impuestos punitivos a las emisiones de carbono"
+    respuesta3: Modelo que busca reducir los residuos de una industria al reutilizar,
+      reparar, reciclar y/o aprovecharlos
+    respuesta4: "Estrategia que prioriza la deslocalizaci\xF3n de los centros productivos
+      para reducir costos operativos sin alterar el dise\xF1o del ciclo de vida del
+      producto"
+    boolquedefinesiesESApregunta: 0
+    respuesta1Correcta: 0
+    respuesta2Correcta: 0
+    respuesta3Correcta: 0
+    respuesta4Correcta: 0
+    repuetanume: 3
+  - pregunta: "\xBFPor qu\xE9 un producto con 80% de amino\xE1cidos no es mejor que
+      uno con menor contenido?"
+    respuesta1: "El exceso de amino\xE1cidos satura los receptores estom\xE1ticos
+      e inhibe por completo la fotos\xEDntesis del cultivo"
+    respuesta2: "Solo se debe comparar composici\xF3n de fichas t\xE9cnicas"
+    respuesta3: "Los productos con alta concentraci\xF3n de nitr\xF3geno proteico
+      precipitan de forma irreversible al contacto con el aire"
+    respuesta4: "El peso molecular y el porcentaje de amino\xE1cidos libres determinan
+      la verdadera efectividad m\xE1s que el total acumulado"
+    boolquedefinesiesESApregunta: 0
+    respuesta1Correcta: 0
+    respuesta2Correcta: 0
+    respuesta3Correcta: 0
+    respuesta4Correcta: 0
+    repuetanume: 2
