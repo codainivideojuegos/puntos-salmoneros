@@ -1,3 +1,5 @@
+using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,6 +12,7 @@ public class Vida : MonoBehaviour
     public GameObject coso;
     public int MaxVida = 3;
     public int vida;
+    public float TempoInmunidad; 
 
     void Awake()
     {
@@ -18,12 +21,9 @@ public class Vida : MonoBehaviour
     public void Dolor(int cantidad)
     {
         vida -= cantidad;
-        ScriptdeNviel1.Daño = true;
         if (vida < 0) vida = 0; 
-
         Actualizar();
-
-
+        ScriptdeNviel1.Daño = true;
         if (vida <= 0)
         {
             ScriptdeNviel1.anim.SetBool("IsDead",true);
@@ -32,6 +32,10 @@ public class Vida : MonoBehaviour
             Panelmuerte.SetActive(true);
             coso.SetActive(false);
         }
+    }
+    public void NoDaño()
+    {
+        ScriptdeNviel1.Daño = false;
     }
     public void EstablecerVida()
     {
@@ -53,4 +57,5 @@ public class Vida : MonoBehaviour
         int Escenaactual = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(Escenaactual);
     }
+    
 }
