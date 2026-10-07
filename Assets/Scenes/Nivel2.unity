@@ -4540,6 +4540,7 @@ MonoBehaviour:
   umbralPreguntasParaAvanzar: 7
   esUltimoNivel: 0
   escenaSiguiente: Nivel3
+  supermanager: {fileID: 1525110462}
 --- !u!4 &1903390271
 Transform:
   m_ObjectHideFlags: 0
@@ -6564,6 +6565,7 @@ MonoBehaviour:
   coso: {fileID: 8437293128568360955}
   MaxVida: 3
   vida: 3
+  TempoInmunidad: 0
 --- !u!114 &8824311141197137536
 MonoBehaviour:
   m_ObjectHideFlags: 0

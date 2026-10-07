@@ -48,6 +48,7 @@ public class Test2 : MonoBehaviour
     private Preguntas preguntaActual;
     private bool[] respuestasMarcadas = new bool[4];
     private bool esperandoFeedback = false;
+    public AudioManagerOscar supermanager;
 
 
     // ==========================================
@@ -174,6 +175,11 @@ public class Test2 : MonoBehaviour
         if (correcto)
         {
             counter.SumarPunto();
+            supermanager.changeSFX("Opcion Correcta");
+        }
+        else
+        {
+            supermanager.changeSFX("Opcion Incorrecta");
         }
 
         StartCoroutine(MostrarResultadoBoton(correcto, indiceRespuesta));
@@ -236,6 +242,11 @@ public class Test2 : MonoBehaviour
         if (correcto)
         {
             counter.SumarPunto();
+            supermanager.changeSFX("Opcion Correcta");
+        }
+        else
+        {
+            supermanager.changeSFX("Opcion Incorrecta");
         }
 
         StartCoroutine(MostrarResultadoMultiple(correcto));
