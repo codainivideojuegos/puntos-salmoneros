@@ -5708,7 +5708,7 @@ MonoBehaviour:
   textonumerorespuestas: {fileID: 2061639802}
   textonumerorespuestas2: {fileID: 1835009559}
   canvabueno: {fileID: 1524180735}
-  tiempoVisible: 3
+  tiempoVisible: 7
 --- !u!114 &8824311141197137535
 MonoBehaviour:
   m_ObjectHideFlags: 0

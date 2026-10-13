@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Conter : MonoBehaviour
 {
@@ -58,5 +59,6 @@ public class Conter : MonoBehaviour
         yield return new WaitForSeconds(tiempoVisible);
 
         canvabueno.SetActive(false);
+        SceneManager.LoadScene("Menu");
     }
 }
